@@ -1,0 +1,10 @@
+select * from ":geral:nsusuari.db" usu inner join ":geral:nsempres.db" emp on (usu.ultimaempresa = emp.empresa) 
+where usu.usuario = 'COD_DO_usuario'
+
+
+select * from ":geral:nsusuari.db" usu inner join ":geral:cwempres.db" emp on (usu.ultimaempresa = emp.empresa)
+where usu.usuario = 'COD_DO_usuario'
+
+
+select * from ":geral:nsusuari.db" usu inner join ":geral:swempres.db" emp on (usu.ultimaempresa = emp.empresa)
+where usu.usuario = 'COD_DO_usuario'

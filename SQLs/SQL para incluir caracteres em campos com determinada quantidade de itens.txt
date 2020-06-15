@@ -1,0 +1,13 @@
+SQL para inserir caracteres em campos
+
+
+update cwiteest set CodigoBarra = "0000" + CodigoBarra where CodigoBarra  like "____"
+
+
+update cwiteest set CodigoBarra = "000" + CodigoBarra where CodigoBarra  like "_____"
+
+
+update cwiteest set CodigoBarra = "00" + CodigoBarra where CodigoBarra  like "______"
+
+
+update cwiteest set CodigoBarra = "0" + CodigoBarra where CodigoBarra  like "_______"

@@ -1,0 +1,8 @@
+select documento, tipo, emissao, lanfis09.lancamento, itelan09.lancamento as lcto from lanfis09
+full outer join
+itelan09 on
+(lanfis09.lancamento = itelan09.lancamento)
+where itelan09.lancamento is null
+and lanfis09.tipo <> "3"
+and lanfis09.Cancelado = "False"
+order by tipo, emissao

@@ -1,0 +1,38 @@
+busca nas tabelas do rastro do esquema log
+
+
+DO
+$$
+DECLARE REG_RASTRO RECORD;
+DECLARE REG_RASTRO2 RECORD; 
+DECLARE VAR_TOTAL INTEGER;
+BEGIN
+  RAISE NOTICE 'INICIO';
+  DROP TABLE IF EXISTS TMP_RASTROS;
+
+  CREATE TEMPORARY TABLE TMP_RASTROS( NOMETABELA VARCHAR (255));
+
+  FOR REG_RASTRO IN ( SELECT table_schema || '.' || table_name as tabela
+                      FROM information_schema.tables
+                      WHERE table_schema='log'
+                        AND table_type='BASE TABLE'
+                      ORDER BY table_name ) LOOP
+
+    INSERT INTO TMP_RASTROS(NOMETABELA) VALUES (REG_RASTRO.tabela);
+
+  END LOOP;  
+
+  FOR REG_RASTRO2 IN (SELECT NOMETABELA FROM TMP_RASTROS) LOOP
+     EXECUTE 'SELECT COUNT(1) FROM ' || REG_RASTRO2.NOMETABELA || ' WHERE TABELA = ''df_docfis'' AND NEWVALUE->>''id''=''911aa3b7-fef7-4857-9a09-f2c4142d912f''' INTO VAR_TOTAL;
+     IF COALESCE(VAR_TOTAL, 0) > 0 THEN
+       RAISE EXCEPTION '%', REG_RASTRO2.NOMETABELA; 
+     END IF;
+
+     RAISE NOTICE '%', REG_RASTRO2.NOMETABELA; 
+ 
+  END LOOP;
+
+  DROP TABLE IF EXISTS TMP_RASTROS;
+  RAISE NOTICE 'FIM';
+END;
+$$

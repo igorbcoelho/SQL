@@ -1,0 +1,27 @@
+SELECT '30/11/2010' as Data, Item, Estoque,
+((SaldoAnterior + TotalEntradas) - TotalSaidas) as Quantidade from cwSalest
+where Estoque = 1
+and TotalEntradas is not null
+and TotalSaidas is not null
+
+union
+
+SELECT '30/11/2010' as Data, Item, Estoque,
+((SaldoAnterior + 0) - 0) as Quantidade from cwSalest
+where Estoque = 1
+and TotalSaidas is null
+and TotalEntradas is null
+
+union
+
+SELECT '30/11/2010' as Data, Item, Estoque,
+((SaldoAnterior + TotalEntradas) - 0) as Quantidade from cwSalest
+where Estoque = 1
+and TotalSaidas is null
+
+union
+
+SELECT '30/11/2010' as Data, Item, Estoque,
+((SaldoAnterior + 0) - TotalSaidas) as Quantidade from cwSalest
+where Estoque = 1
+and TotalEntradas is null

@@ -1,0 +1,11 @@
+INSERT INTO ns.configuracoes(
+campo, 
+valor,
+versao,
+aplicacao
+)VALUES(
+63,
+TRUE,
+1,
+7
+)

@@ -1,0 +1,39 @@
+Select T.numero, RF.centrocusto, C.codigo, RF.rateiofinanceiro, RF.valor, d.documentorateado from erp.centroscustos C
+INNER JOIN erp.rateiosfinanceiros RF ON
+(RF.centrocusto = C.centrocusto)
+INNER JOIN erp.documentosrateados D ON
+(D.documentorateado = RF.documentorateado)
+INNER JOIN erp.titulosreceber T ON
+(T.documentorateado = D.documentorateado)
+where t.numero IN ('273495.001', '273495.002', '273495.003', '273495.004', '273495.005')
+Order by t.numero;
+
+
+select L.lancamentoconta, RF.centrocusto, CC.codigo, RF.rateiofinanceiro, RF.valor, d.documentorateado from erp. centroscustos CC
+INNER JOIN erp.rateiosfinanceiros RF ON
+(RF.centrocusto = CC.centrocusto)
+INNER JOIN erp.documentosrateados D ON
+(D.documentorateado = RF.documentorateado)
+INNER JOIN erp.lancamentoscontas L ON
+(L.documentorateado = D.documentorateado)
+INNER JOIN erp.contas C ON
+(C.conta = L.conta)
+where L.data = '2014-06-18' AND C.codigo = 'ITAUNATIV';
+
+
+update erp.rateiosfinanceiros set centrocusto = 17 where rateiofinanceiro IN (277637, 277638, 277639, 277640, 277641);
+update erp.rateiosfinanceiros set valor = '3333.33' where rateiofinanceiro = 277914;
+update erp.rateiosfinanceiros set valor = '8901.42' where rateiofinanceiro = 277918;
+
+
+-- VERIFICAR COM AS CLASSIFICAÇÕES FINANCEIRAS
+select L.lancamentoconta, L.historico, CF.codigo, RF.rateiofinanceiro, D.documentorateado, RF.valor from erp.classificacoesfinanceiras CF
+LEFT JOIN erp.rateiosfinanceiros RF ON
+(RF.classificacaofinanceira = CF.classificacaofinanceira)
+LEFT JOIN erp.documentosrateados D ON
+(D.documentorateado = RF.documentorateado)
+LEFT JOIN erp.lancamentoscontas L ON
+(L.documentorateado = D.documentorateado)
+LEFT JOIN erp.contas C ON
+(C.conta = L.conta)
+where L.lancamentoconta = 444650;

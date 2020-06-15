@@ -1,0 +1,1 @@
+select * from cwnotfis where numero = "763754" or numero = "766068" order by numero

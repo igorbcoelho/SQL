@@ -1,0 +1,24 @@
+﻿WITH total AS (
+select p.pessoa, p.nome, s.servico, (ic.valor*ic.quantidade) totalitem, sum(ic.valor*ic.quantidade) OVER (PARTITION BY p.pessoa, p.nome) totalmanutencao
+from financas.itenscontratos ic
+inner join servicos.servicos s on ic.servico = s.id 
+inner join financas.contratos c on c.contrato = ic.contrato
+inner join ns.pessoas p on p.id = c.participante
+where C.TIPOCONTRATO = 1
+AND ic.CANCELADO = FALSE
+AND ic.PROCESSADO = TRUE
+AND ic.VALOR > 0
+AND C.PERFILCONTRATO = 'S'::CHARACTER
+and ic.recorrente = true
+and ic.unidadenatureza = 2
+and ic.unidadeintervalonatureza = 2
+group by p.pessoa, p.nome, s.servico, ic.valor*ic.quantidade
+order by sum(ic.valor*ic.quantidade) OVER (PARTITION BY p.pessoa, p.nome) DESC, sum(ic.valor*ic.quantidade)::numeric desc
+), totalrank AS (
+SELECT *, dense_rank() OVER (ORDER BY totalmanutencao DESC) rank
+FROM total
+ORDER BY totalmanutencao DESC
+)
+SELECT pessoa, nome, servico, totalitem, totalmanutencao, rank
+FROM totalrank
+WHERE rank <= 50

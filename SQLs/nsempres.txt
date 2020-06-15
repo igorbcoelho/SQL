@@ -1,0 +1,1 @@
+select * from ":geral:nsusuari.db" usu inner join ":geral:nsempres.db" emp on (usu.ultimaempresa = emp.empresa)

@@ -1,0 +1,53 @@
+
+UPDATE erp.participantes SET vendedor = 'XXX' WHERE vendedor = 'YYY';
+UPDATE erp.participantes SET captador = 'XXX' WHERE captador = 'YYY';
+
+
+-- altera clientes do vendedor THIAGOMARTINS para o vendedor GABRIELPIRES
+UPDATE erp.participantes SET vendedor = '240' WHERE participante IN
+(
+	SELECT P.participante FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE E.tipoendereco = '0' 
+	AND P.vendedorativado = '0'
+	AND P.vendedor = '227'
+	AND E.uf IN ('PA', 'BA', 'MA', 'PB', 'CE', 'MS', 'MT', 'RN')
+);
+
+UPDATE erp.participantes SET captador = '240' WHERE participante IN
+(
+	SELECT P.participante FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE E.tipoendereco = '0' 
+	AND P.vendedorativado = '0'
+	AND P.captador = '227'
+	AND E.uf IN ('PA', 'BA', 'MA', 'PB', 'CE', 'MS', 'MT', 'RN')
+);
+
+-- /// =================================================================== ///
+ 
+-- altera clientes do vendedor THIAGOMARTINS para o vendedora MARCELLEFONTES
+UPDATE erp.participantes SET vendedor = '210' WHERE participante IN
+(
+	SELECT P.participante FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE E.tipoendereco = '0' 
+	AND P.vendedorativado = '0'
+	AND P.vendedor = '227'
+	AND E.uf IN ('AM', 'MG', 'AL', 'AP', 'RJ', 'ES', 'SE')
+);
+
+UPDATE erp.participantes SET captador = '210' WHERE participante IN
+(
+	SELECT P.participante FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE E.tipoendereco = '0' 
+	AND P.vendedorativado = '0'
+	AND P.captador = '227'
+	AND E.uf IN ('AM', 'MG', 'AL', 'AP', 'RJ', 'ES', 'SE')
+);
+

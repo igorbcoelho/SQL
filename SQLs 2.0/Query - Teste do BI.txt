@@ -1,0 +1,64 @@
+SELECT x.empresa, x.nomefantasia, x.tipocliente, x.segmentoatuacao,
+       x.midiaorigem, x.representante,
+       x.quantidade, x.valor,
+       x.emissao, x.codigoservico, x.descricaoservico, x.tiposervico FROM (
+SELECT ns.empresas.codigo as empresa, clientes.nomefantasia, tiposclientes.codigo as tipocliente, segmentosatuacao.descricao as segmentoatuacao,
+       midiasorigem.codigo as midiaorigem, representantes.nome as representante,
+       itenscobrancasprocessadas.quantidade, itenscobrancasprocessadas.valortotal as valor,
+       rpss.emissao, servicos.codigo as codigoservico, servicos.descricao as descricaoservico, tiposservicos.codigo as tiposervico
+FROM
+       erp.rpss
+       INNER JOIN ns.empresas ON
+       (ns.empresas.empresa = erp.rpss.estabelecimento and ns.empresas.tiporegistro = 2)
+       INNER JOIN erp.clientes ON
+       (erp.rpss.participante = erp.clientes.cliente)
+       LEFT JOIN erp.tiposclientes ON
+       (erp.clientes.tipocliente = erp.tiposclientes.tipocliente)
+       LEFT JOIN erp.segmentosatuacao ON
+       (erp.clientes.segmentoatuacao = erp.segmentosatuacao.segmentoatuacao)
+       LEFT JOIN erp.midiasorigem  ON
+       (erp.clientes.midiaorigem = erp.midiasorigem.midiaorigem)
+       LEFT JOIN erp.representantes ON
+       (erp.clientes.representante = erp.representantes.representante)
+       INNER JOIN erp.itenscobrancasprocessadas ON
+       (erp.itenscobrancasprocessadas.rps = erp.rpss.rps)
+       INNER JOIN erp.itenscobrancas ON
+       (erp.itenscobrancasprocessadas.itemcobranca = erp.itenscobrancas.itemcobranca)
+       INNER JOIN erp.servicos  ON
+       (erp.itenscobrancas.servico = erp.servicos.servico)
+       INNER JOIN erp.tiposservicos  ON
+       (erp.servicos.tiposervico = erp.tiposservicos.tiposervico)
+WHERE erp.rpss.pedidovendaservico is null
+UNION ALL
+SELECT ns.empresas.codigo as empresa, clientes.nomefantasia, tiposclientes.codigo as tipocliente, segmentosatuacao.descricao as segmentoatuacao,
+       midiasorigem.codigo as midiaorigem, representantes.nome as representante,
+       itenspedidosvendasservicos.quantidade,  (itenspedidosvendasservicos.quantidade* itenspedidosvendasservicos.valorunitario) as valor,
+       rpss.emissao, servicos.codigo as codigoservico, servicos.descricao as descricaoservico, tiposservicos.codigo as tiposervico
+FROM
+       erp.rpss
+       INNER JOIN ns.empresas ON
+       (ns.empresas.empresa = erp.rpss.estabelecimento and ns.empresas.tiporegistro = 2)
+       INNER JOIN erp.clientes ON
+       (erp.rpss.participante = erp.clientes.cliente)
+       LEFT JOIN erp.tiposclientes ON
+       (erp.clientes.tipocliente = erp.tiposclientes.tipocliente)
+       LEFT JOIN erp.segmentosatuacao ON
+       (erp.clientes.segmentoatuacao = erp.segmentosatuacao.segmentoatuacao)
+       LEFT JOIN erp.midiasorigem  ON
+       (erp.clientes.midiaorigem = erp.midiasorigem.midiaorigem)
+       LEFT JOIN erp.representantes ON
+       (erp.clientes.representante = erp.representantes.representante)
+       INNER JOIN erp.pedidosvendasservicos ON
+       (erp.pedidosvendasservicos.pedidovendaservico = erp.rpss.pedidovendaservico)
+       INNER JOIN erp.itenspedidosvendasservicos ON
+       (erp.itenspedidosvendasservicos.pedidovendaservico = erp.pedidosvendasservicos.pedidovendaservico)
+       INNER JOIN erp.servicos  ON
+       (erp.itenspedidosvendasservicos.servico = erp.servicos.servico)
+       INNER JOIN erp.tiposservicos  ON
+       (erp.servicos.tiposervico = erp.tiposservicos.tiposervico)
+WHERE erp.rpss.pedidovendaservico is not null) x
+WHERE x.emissao BETWEEN :emissaoinicial and :emissaofinal
+GROUP BY x.empresa, x.nomefantasia, x.tipocliente, x.segmentoatuacao,
+       x.midiaorigem, x.representante,
+       x.quantidade, x.valor,
+       x.emissao, x.codigoservico, x.descricaoservico, x.tiposervico

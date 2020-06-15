@@ -1,0 +1,8 @@
+-- Apagar tabelas envolvidas no novo modelo de comissoes
+
+delete from CRM.resumovendasapuradas;
+delete from CRM.vendasapuradas;
+delete from CRM.resumopagamentoscomissoes;
+delete from CRM.pagamentoscomissoes;
+delete from CRM.itensdevolucoesservicos;
+delete from CRM.devolucoesservicos;

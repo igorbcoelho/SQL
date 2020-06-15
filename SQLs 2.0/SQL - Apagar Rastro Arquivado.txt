@@ -1,0 +1,16 @@
+-- APAGAR RASTRO ARQUIVADO
+
+DO
+$$
+DECLARE
+	r RECORD;
+BEGIN
+
+	FOR r IN (SELECT table_schema, table_name FROM information_schema.tables WHERE table_catalog = 'igor' AND table_schema = 'log') LOOP
+
+		EXECUTE 'DROP TABLE ' || r.table_schema || '.' || r.table_name;
+
+	END LOOP;
+
+END
+$$;

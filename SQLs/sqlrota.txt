@@ -1,0 +1,6 @@
+select * FROM cwmovim
+      INNER JOIN cwmovime ON 
+     (cwmovim.datahora <> cwmovime.datahora)
+
+
+SELECT * FROM "C:\Temp\B.DB" B WHERE B.NOME NOT IN (SELECT A.NOME FROM "C:\Temp\A.DB" A

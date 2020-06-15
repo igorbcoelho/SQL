@@ -1,0 +1,4 @@
+Select Numero, Emissao, Producao 
+From CwOrdPro 
+Where Ordem Not in ( Select Documento from CwMovest) 
+and cwOrdPro.Situacao = "1"

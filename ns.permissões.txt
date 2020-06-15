@@ -1,0 +1,171 @@
+CREATE OR REPLACE FUNCTION ns.permissoes()
+  RETURNS void AS
+$BODY$ 
+BEGIN 
+ 
+DO 
+$$BEGIN 
+    IF NOT EXISTS ( 
+		  SELECT rolname FROM pg_catalog.pg_roles 
+             	  WHERE rolname = 'group_nasajon' 
+                  ) THEN 
+        EXECUTE 'CREATE ROLE group_nasajon 
+  		NOSUPERUSER INHERIT NOCREATEDB CREATEROLE NOREPLICATION'; 
+    END IF; 
+    EXECUTE 'GRANT group_nasajon to ' || CURRENT_USER;
+END$$; 
+ 
+-- GRANT SELECT SYSTEM TABLES
+
+GRANT SELECT ON pg_catalog.pg_roles TO group_nasajon;
+GRANT SELECT ON pg_catalog.pg_auth_members TO group_nasajon;
+
+
+-- GRANT SCHEMAS
+
+DO
+$$
+ DECLARE
+  r record;
+BEGIN
+  FOR r IN select schema_name from information_schema.schemata where schema_name <> 'information_schema' and schema_name !~ E'^pg_'
+  LOOP
+      EXECUTE 'GRANT ALL ON SCHEMA ' || r.schema_name || ' TO group_nasajon; ';
+  END LOOP;
+END
+$$;
+
+
+-- ALTER OWNER FUNCTIONS TO group_nasajon
+
+DO
+$$
+DECLARE
+		r record;
+BEGIN
+
+		FOR r IN SELECT
+					routine_schema AS "routine_schema",  specific_name,
+					routine_name || '(' || array_to_string(array_agg(type),',') || ')' AS "routine_name"
+		  	 FROM
+					(
+						SELECT
+									ro.routine_schema AS "routine_schema",
+									ro.routine_name AS "routine_name",
+									ro.specific_name AS "specific_name",
+									CASE
+										WHEN pa.udt_name ILIKE '\_' THEN
+											CASE pa.udt_schema
+												WHEN 'pg_catalogs' THEN REPLACE(pa.udt_name,'_','') || '[]'::text
+												ELSE pa.udt_schema::text || '.' || REPLACE(pa.udt_name,'_','') || '[]'::text
+											END
+										WHEN pa.udt_name = 'char' THEN '"' || 'char' || '"'
+										ELSE
+											CASE pa.udt_schema
+												WHEN 'pg_catalogs' THEN pa.udt_name::text
+												ELSE pa.udt_schema::text || '.' || pa.udt_name::text
+											END
+									END AS "type"
+						FROM
+									information_schema.routines AS "ro"
+						LEFT JOIN
+									information_schema.parameters AS "pa"
+									ON (ro.specific_schema = pa.specific_schema AND ro.specific_name = pa.specific_name
+									     AND pa.parameter_mode = 'IN' )
+						WHERE
+									ro.specific_schema IN (select schema_name from information_schema.schemata where schema_name <> 'information_schema' and schema_name !~ E'^pg_')
+						ORDER BY
+									ro.routine_schema,
+									ro.specific_name,
+									ro.routine_name,
+									pa.ordinal_position
+					) AS "funcoes"
+			 GROUP BY
+					routine_schema,
+					specific_name,
+					routine_name
+		LOOP
+
+			EXECUTE 'ALTER FUNCTION ' || r.routine_schema || '.' || r.routine_name || ' OWNER TO group_nasajon';
+
+		END LOOP;
+
+END
+$$;
+
+
+-- ALTER OWNER TABLES E VIEWS TO group_nasajon
+
+DO
+$$
+DECLARE
+
+		r record;
+
+BEGIN
+
+    		FOR r IN SELECT table_schema, table_name FROM information_schema.tables WHERE table_type IN ('VIEW','BASE TABLE') AND table_schema IN (select schema_name from information_schema.schemata where schema_name <> 'information_schema' and schema_name !~ E'^pg_')
+		LOOP
+
+			EXECUTE 'GRANT SELECT, INSERT, UPDATE, DELETE ON ' || quote_ident(r.table_schema) || '.' || quote_ident(r.table_name) || ' TO group_nasajon';
+			EXECUTE 'ALTER TABLE ' || quote_ident(r.table_schema) || '.' || quote_ident(r.table_name) || ' OWNER TO group_nasajon';
+
+		END LOOP;
+
+END
+$$;
+
+
+-- ALTER OWNER SEQUENCES TO group_nasajon
+
+DO
+$$
+DECLARE
+
+		r record;
+
+BEGIN
+
+	    	FOR r IN SELECT sequence_schema, sequence_name FROM information_schema.sequences WHERE sequence_schema IN (select schema_name from information_schema.schemata where schema_name <> 'information_schema' and schema_name !~ E'^pg_')
+    		LOOP
+        		EXECUTE 'GRANT ALL ON ' || quote_ident(r.sequence_schema) || '.' || quote_ident(r.sequence_name) || ' TO group_nasajon';
+        		EXECUTE 'ALTER TABLE ' || quote_ident(r.sequence_schema) || '.' || quote_ident(r.sequence_name) || ' OWNER TO group_nasajon';
+    		END LOOP;
+
+END
+$$;
+-- ALTERANDO DONO DE TIPOS DEFINIDOS
+
+DO
+$$
+DECLARE r RECORD;
+BEGIN
+FOR r IN (SELECT
+		n.nspname AS schema,
+		pg_catalog.format_type (t.oid, NULL ) AS name,
+		t.typname AS internal_name
+	   FROM pg_catalog.pg_type t
+	   INNER JOIN pg_catalog.pg_namespace n
+	   ON n.oid = t.typnamespace
+	   WHERE (t.typrelid = 0
+	          OR (SELECT c.relkind = 'c'
+		           FROM pg_catalog.pg_class c
+		           WHERE c.oid = t.typrelid))
+	   AND NOT EXISTS (SELECT 1
+			   FROM pg_catalog.pg_type el
+			   WHERE el.oid = t.typelem
+			   AND el.typarray = t.oid)
+	   AND n.nspname <> 'pg_catalog'
+	   AND n.nspname <> 'information_schema'
+	   ORDER BY 1, 3) LOOP
+	EXECUTE 'ALTER TYPE ' || r.name || ' OWNER TO group_nasajon;';
+END LOOP;
+END
+$$;
+ 
+END; 
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION ns.permissoes()
+  OWNER TO group_nasajon;

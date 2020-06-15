@@ -1,0 +1,32 @@
+﻿-- EXIBIR PEDIDOS FATURADOS MAS COM SITUAÇÃO ERRADA
+SELECT DISTINCT PD.NUMERO, PD.TIPO, NF.NUMERO, NF.TIPO, PD.SITUACAO, 
+PD.SITUACAOGERENCIAL, IP.QUANTIDADECOMERCIAL, IT.QUANTIDADECOMERCIAL
+FROM NS.DF_DOCFIS PD  
+JOIN NS.DF_LINHAS IP ON IP.ID_DOCFIS = PD.ID AND PD.TIPO = 20
+JOIN NS.DF_LINHAS IT ON IT.ID_DOCFIS_ORIGEM = IP.ID_DOCFIS
+JOIN NS.DF_DOCFIS NF ON NF.ID = IT.ID_DOCFIS -- AND NF.TIPO = 0 (JÁ EMITIDA OU TIPO = 21 SE ESTIVER ABERTA)
+WHERE PD.SITUACAOGERENCIAL = 2
+AND IP.QUANTIDADECOMERCIAL = IT.QUANTIDADECOMERCIAL
+ORDER BY PD.NUMERO DESC
+
+
+/* EXEMPLOS:
+
+pedido
+df_linha = '1179ff64-a87a-4fac-bd39-d10f66cb7c2b'
+id_docfis = '158b07e3-08ad-40ed-b03c-75217b74099d'
+
+
+nota
+df_linha = 'e069a78e-e966-4ad8-9b81-2ce7a37048be'
+ID_docfis = 'd512df1b-035b-41eb-972d-294d2906a383'
+ID_docfis_origem = '158b07e3-08ad-40ed-b03c-75217b74099d'
+
+
+associacoesitensnotas
+id_docreferenciado = '158b07e3-08ad-40ed-b03c-75217b74099d' -- id_docfis_origem que é o id do pedido
+id_linhadocreferenciado = '1179ff64-a87a-4fac-bd39-d10f66cb7c2b' -- df_linha do item do pedido
+id_linhadocorigem = 'e069a78e-e966-4ad8-9b81-2ce7a37048be' -- df_linha do item da nota
+id_docorigem = 'd512df1b-035b-41eb-972d-294d2906a383' -- id_docfis da nota
+
+*/

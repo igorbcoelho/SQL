@@ -1,0 +1,2068 @@
+object reportEditorRelatorio: TppReport
+  AutoStop = False
+  DataPipeline = daUniDacQueryDataView1.df_docfis
+  PrinterSetup.BinName = 'Default'
+  PrinterSetup.DocumentName = 'Report'
+  PrinterSetup.Duplex = dpNone
+  PrinterSetup.Orientation = poLandscape
+  PrinterSetup.PaperName = 'A4'
+  PrinterSetup.PrinterName = 'Default'
+  PrinterSetup.SaveDeviceSettings = False
+  PrinterSetup.mmMarginBottom = 10000
+  PrinterSetup.mmMarginLeft = 10000
+  PrinterSetup.mmMarginRight = 10000
+  PrinterSetup.mmMarginTop = 10000
+  PrinterSetup.mmPaperHeight = 210000
+  PrinterSetup.mmPaperWidth = 297000
+  PrinterSetup.PaperSize = 9
+  SaveAsTemplate = True
+  Template.DatabaseSettings.DataPipeline = plItem
+  Template.DatabaseSettings.Name = '_COMISSOES POR VENDEDOR'
+  Template.DatabaseSettings.NameField = 'nome'
+  Template.DatabaseSettings.TemplateField = 'Template'
+  Template.FileName = 'C:\Users\paolopelosi\Desktop\Relatorio_Comissoes_Vendedor.rtm'
+  Template.Format = ftASCII
+  Units = utMillimeters
+  AllowPrintToArchive = True
+  AllowPrintToFile = True
+  ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+  DeviceType = 'Screen'
+  DefaultFileDeviceType = 'PDF'
+  EmailSettings.ReportFormat = 'PDF'
+  EmailSettings.Enabled = True
+  EmailSettings.ShowEmailDialog = True
+  LanguageID = 'Default'
+  OpenFile = False
+  OutlineSettings.CreateNode = True
+  OutlineSettings.CreatePageNodes = True
+  OutlineSettings.Enabled = False
+  OutlineSettings.Visible = False
+  ThumbnailSettings.Enabled = True
+  ThumbnailSettings.Visible = True
+  ThumbnailSettings.DeadSpace = 30
+  PDFSettings.EmbedFontOptions = []
+  PDFSettings.EncryptSettings.AllowCopy = True
+  PDFSettings.EncryptSettings.AllowInteract = True
+  PDFSettings.EncryptSettings.AllowModify = True
+  PDFSettings.EncryptSettings.AllowPrint = True
+  PDFSettings.EncryptSettings.AllowExtract = True
+  PDFSettings.EncryptSettings.AllowAssemble = True
+  PDFSettings.EncryptSettings.AllowQualityPrint = True
+  PDFSettings.EncryptSettings.Enabled = False
+  PDFSettings.EncryptSettings.KeyLength = kl40Bit
+  PDFSettings.EncryptSettings.EncryptionType = etRC4
+  PDFSettings.FontEncoding = feAnsi
+  PDFSettings.ImageCompressionLevel = 25
+  PreviewFormSettings.WindowState = wsMaximized
+  PreviewFormSettings.ZoomSetting = zsPageWidth
+  RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+  RTFSettings.DefaultFont.Color = clWindowText
+  RTFSettings.DefaultFont.Height = -13
+  RTFSettings.DefaultFont.Name = 'Arial'
+  RTFSettings.DefaultFont.Style = []
+  ShowAutoSearchDialog = True
+  TextFileName = '($MyDocuments)\Report.pdf'
+  TextSearchSettings.DefaultString = '<Texto a localizar>'
+  TextSearchSettings.Enabled = True
+  XLSSettings.AppName = 'ReportBuilder'
+  XLSSettings.Author = 'ReportBuilder'
+  XLSSettings.Subject = 'Report'
+  XLSSettings.Title = 'Report'
+  XLSSettings.WorksheetName = 'Report'
+  Left = 488
+  Top = 65
+  Version = '17.02'
+  mmColumnWidth = 0
+  DataPipelineName = 'df_docfis'
+  object ppHeaderBand1: TppHeaderBand
+    Background.Brush.Style = bsClear
+    mmBottomOffset = 0
+    mmHeight = 21696
+    mmPrintPosition = 0
+    object ppShape13: TppShape
+      DesignLayer = ppDesignLayer12
+      UserName = '__InternoppCabecalhoShapeEx1'
+      Brush.Color = 15724527
+      Pen.Style = psClear
+      mmHeight = 13758
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 277019
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object ppLabel80: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'lblCabecalho'
+      AutoSize = False
+      Caption = 'Comiss'#245'es por Vendedor'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 4233
+      mmLeft = 0
+      mmTop = 9790
+      mmWidth = 277019
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object ppLabel82: TppLabel
+      Tag = 1
+      DesignLayer = ppDesignLayer12
+      UserName = '__InternoppNomeSistemaEx1'
+      AutoSize = False
+      Caption = 'Estoque SQL'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 3969
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 277019
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object ppLabel90: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = '__InternoppNasajonEx1'
+      Caption = 'Nasajon Sistemas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      Transparent = True
+      mmHeight = 3969
+      mmLeft = 265
+      mmTop = 0
+      mmWidth = 28310
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object ppSystemVariable4: TppSystemVariable
+      Tag = 7
+      DesignLayer = ppDesignLayer12
+      UserName = '__InternoppDataEx1'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      mmHeight = 3175
+      mmLeft = 265
+      mmTop = 9790
+      mmWidth = 14023
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object ppSystemVariable5: TppSystemVariable
+      Tag = 8
+      DesignLayer = ppDesignLayer12
+      UserName = '__InternoppHoraEx1'
+      VarType = vtTime
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      mmHeight = 3175
+      mmLeft = 17463
+      mmTop = 9790
+      mmWidth = 11113
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object NumeroPaginaFim: TppSystemVariable
+      DesignLayer = ppDesignLayer12
+      UserName = 'ContaPagina1'
+      HyperlinkEnabled = False
+      VarType = vtPageSetDesc
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      mmHeight = 3440
+      mmLeft = 254530
+      mmTop = 10319
+      mmWidth = 20638
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object ppLabel9: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'lblPeriodo'
+      AutoSize = False
+      Caption = 'lblPeriodo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 3387
+      mmLeft = 5556
+      mmTop = 15081
+      mmWidth = 271198
+      BandType = 0
+      LayerName = BandLayer2
+    end
+    object ppDBText14: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText14'
+      DataField = 'razaosocial'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 12
+      Font.Style = []
+      TextAlignment = taCentered
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 4498
+      mmLeft = 265
+      mmTop = 4498
+      mmWidth = 276755
+      BandType = 0
+      LayerName = BandLayer2
+    end
+  end
+  object ppDetailBand7: TppDetailBand
+    Background1.Brush.Style = bsClear
+    Background2.Brush.Style = bsClear
+    mmBottomOffset = 0
+    mmHeight = 3704
+    mmPrintPosition = 0
+    object ppNSShape1: TppNSShape
+      DesignLayer = ppDesignLayer12
+      UserName = 'NSShape1'
+      Brush.Color = 15790320
+      ParentWidth = True
+      Pen.Style = psClear
+      mmHeight = 3704
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 277000
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText3: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText3'
+      DataField = 'emissao'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 3417
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 15875
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText4: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText4'
+      DataField = 'numero'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 3417
+      mmLeft = 17637
+      mmTop = 0
+      mmWidth = 17198
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText6: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText6'
+      DataField = 'nome_2'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      WordWrap = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 3440
+      mmLeft = 70388
+      mmTop = 0
+      mmWidth = 97832
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText5: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText5'
+      DataField = 'documento_operacao_codigo'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 3417
+      mmLeft = 36451
+      mmTop = 0
+      mmWidth = 29782
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText9: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText9'
+      DataField = 'df_docfis_valor_df_vended'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 3175
+      mmLeft = 223309
+      mmTop = 0
+      mmWidth = 17198
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText10: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText10'
+      DataField = 'percentual_comissao'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      DisplayFormat = '0.00 %'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 4498
+      mmLeft = 196586
+      mmTop = 0
+      mmWidth = 17198
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText13: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText13'
+      DataField = 'codigo_2'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 4498
+      mmLeft = 249658
+      mmTop = 0
+      mmWidth = 26614
+      BandType = 4
+      LayerName = BandLayer2
+    end
+    object ppDBText8: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText8'
+      DataField = 'COALESCE_df_docfis_valor'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 3175
+      mmLeft = 176213
+      mmTop = 0
+      mmWidth = 17198
+      BandType = 4
+      LayerName = BandLayer2
+    end
+  end
+  object ppFooterBand3: TppFooterBand
+    Background.Brush.Style = bsClear
+    mmBottomOffset = 0
+    mmHeight = 0
+    mmPrintPosition = 0
+  end
+  object ppSummaryBand3: TppSummaryBand
+    Background.Brush.Style = bsClear
+    PrintHeight = phDynamic
+    mmBottomOffset = 0
+    mmHeight = 10583
+    mmPrintPosition = 0
+    object ppLine2: TppLine
+      DesignLayer = ppDesignLayer12
+      UserName = 'Line1'
+      Weight = 0.750000000000000000
+      mmHeight = 529
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 277019
+      BandType = 7
+      LayerName = BandLayer2
+    end
+    object ppDBCalc3: TppDBCalc
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBCalc3'
+      DataField = 'COALESCE_df_docfis_valor'
+      DataPipeline = daUniDacQueryDataView1.df_docfis
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      DataPipelineName = 'df_docfis'
+      mmHeight = 3175
+      mmLeft = 190500
+      mmTop = 1058
+      mmWidth = 17198
+      BandType = 7
+      LayerName = BandLayer2
+    end
+  end
+  object ppGroup1: TppGroup
+    BreakName = 'nome'
+    DataPipeline = daUniDacQueryDataView1.df_docfis
+    GroupFileSettings.NewFile = False
+    GroupFileSettings.EmailFile = False
+    KeepTogether = True
+    OutlineSettings.CreateNode = True
+    StartOnOddPage = False
+    UserName = 'Group1'
+    mmNewColumnThreshold = 0
+    mmNewPageThreshold = 0
+    DataPipelineName = 'df_docfis'
+    NewFile = False
+    object ppGroupHeaderBand1: TppGroupHeaderBand
+      Background.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 12965
+      mmPrintPosition = 0
+      object ppLabel12: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label2'
+        Caption = 'Vendedor:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 265
+        mmTop = 0
+        mmWidth = 15610
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppDBText11: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText11'
+        DataField = 'nome'
+        DataPipeline = daUniDacQueryDataView1.df_docfis
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'df_docfis'
+        mmHeight = 3969
+        mmLeft = 16669
+        mmTop = 0
+        mmWidth = 156898
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppShape12: TppShape
+        DesignLayer = ppDesignLayer12
+        UserName = 'zebraCabe'#231'alho'
+        Brush.Color = 15790320
+        ParentWidth = True
+        Pen.Style = psClear
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 8467
+        mmWidth = 277000
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLine9: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line9'
+        ParentWidth = True
+        Position = lpBottom
+        Weight = 0.750000000000000000
+        mmHeight = 794
+        mmLeft = 0
+        mmTop = 12171
+        mmWidth = 277000
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel3: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label1'
+        Caption = 'Nota'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 17659
+        mmTop = 9215
+        mmWidth = 6085
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel4: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label4'
+        Caption = 'Emiss'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 242
+        mmTop = 9260
+        mmWidth = 10848
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel5: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label5'
+        Caption = 'Opera'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 38145
+        mmTop = 9193
+        mmWidth = 12700
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel6: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label6'
+        Caption = 'Cliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        mmHeight = 3175
+        mmLeft = 70388
+        mmTop = 9260
+        mmWidth = 8731
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel8: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label8'
+        Caption = 'Valor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 176213
+        mmTop = 9260
+        mmWidth = 6879
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel10: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label10'
+        Caption = 'Comiss'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3705
+        mmLeft = 223309
+        mmTop = 9260
+        mmWidth = 12435
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel11: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label3'
+        Caption = '% Comiss'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3705
+        mmLeft = 196586
+        mmTop = 9260
+        mmWidth = 15875
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel13: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label9'
+        Caption = 'Tabela'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3705
+        mmLeft = 248709
+        mmTop = 9260
+        mmWidth = 8466
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+    end
+    object ppGroupFooterBand1: TppGroupFooterBand
+      Background.Brush.Style = bsClear
+      HideWhenOneDetail = False
+      mmBottomOffset = 0
+      mmHeight = 6350
+      mmPrintPosition = 0
+      object ppDBCalc7: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc7'
+        DataField = 'COALESCE_df_docfis_valor'
+        DataPipeline = daUniDacQueryDataView1.df_docfis
+        DisplayFormat = '#,0.00;-#,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        ResetGroup = ppGroup1
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'df_docfis'
+        mmHeight = 3175
+        mmLeft = 175948
+        mmTop = 1074
+        mmWidth = 17198
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLine3: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line3'
+        Weight = 0.750000000000000000
+        mmHeight = 1532
+        mmLeft = 163624
+        mmTop = 265
+        mmWidth = 112518
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLabel14: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label11'
+        Caption = 'Total:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 167218
+        mmTop = 1074
+        mmWidth = 7937
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppDBCalc2: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc2'
+        DataField = 'df_docfis_valor_df_vended'
+        DataPipeline = daUniDacQueryDataView1.df_docfis
+        DisplayFormat = '#,0.00;-#,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        ResetGroup = ppGroup1
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'df_docfis'
+        mmHeight = 4498
+        mmLeft = 223309
+        mmTop = 1074
+        mmWidth = 17198
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+      object ppLine5: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line4'
+        Position = lpBottom
+        Weight = 0.750000000000000000
+        mmHeight = 1852
+        mmLeft = 265
+        mmTop = 3752
+        mmWidth = 276226
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer2
+      end
+    end
+  end
+  object ppGroup2: TppGroup
+    BreakName = 'estabelecimento'
+    DataPipeline = daUniDacQueryDataView1.df_docfis
+    GroupFileSettings.NewFile = False
+    GroupFileSettings.EmailFile = False
+    KeepTogether = True
+    OutlineSettings.CreateNode = True
+    StartOnOddPage = False
+    UserName = 'Group2'
+    mmNewColumnThreshold = 0
+    mmNewPageThreshold = 0
+    DataPipelineName = 'df_docfis'
+    NewFile = False
+    object ppGroupHeaderBand2: TppGroupHeaderBand
+      Background.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 5292
+      mmPrintPosition = 0
+      object ppDBText12: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText12'
+        AutoSize = True
+        DataField = 'descricao'
+        DataPipeline = daUniDacQueryDataView1.df_docfis
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'df_docfis'
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 33867
+        BandType = 3
+        GroupNo = 1
+        LayerName = BandLayer2
+      end
+    end
+    object ppGroupFooterBand2: TppGroupFooterBand
+      Background.Brush.Style = bsClear
+      HideWhenOneDetail = False
+      mmBottomOffset = 0
+      mmHeight = 4498
+      mmPrintPosition = 0
+      object ppLabel7: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label7'
+        Caption = 'Subtotal:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 164042
+        mmTop = 794
+        mmWidth = 11113
+        BandType = 5
+        GroupNo = 1
+        LayerName = BandLayer2
+      end
+      object ppDBCalc10: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc10'
+        DataField = 'COALESCE_df_docfis_valor'
+        DataPipeline = daUniDacQueryDataView1.df_docfis
+        DisplayFormat = '#,0.00;-#,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ResetGroup = ppGroup2
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'df_docfis'
+        mmHeight = 3175
+        mmLeft = 176213
+        mmTop = 825
+        mmWidth = 17198
+        BandType = 5
+        GroupNo = 1
+        LayerName = BandLayer2
+      end
+      object ppDBCalc1: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc1'
+        DataField = 'df_docfis_valor_df_vended'
+        DataPipeline = daUniDacQueryDataView1.df_docfis
+        DisplayFormat = '#,0.00;-#,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ResetGroup = ppGroup2
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'df_docfis'
+        mmHeight = 4498
+        mmLeft = 223309
+        mmTop = 825
+        mmWidth = 17198
+        BandType = 5
+        GroupNo = 1
+        LayerName = BandLayer2
+      end
+    end
+  end
+  object daDataModule1: TdaDataModule
+    object daUniDacQueryDataView1: TdaUniDacQueryDataView
+      UserName = 'Query_df_docfis'
+      Height = 416
+      Left = 10
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 10
+      TypeColumnWidth = 52
+      Width = 377
+      AutoSearchTabOrder = 0
+      object df_docfis: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'df_docfis'
+        object ppField1: TppField
+          FieldAlias = 'numero'
+          FieldName = 'numero'
+          FieldLength = 15
+          DisplayWidth = 15
+          Position = 0
+          TableName = 'df_docfis'
+        end
+        object ppField2: TppField
+          FieldAlias = 'emissao'
+          FieldName = 'emissao'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 10
+          Position = 1
+          TableName = 'df_docfis'
+        end
+        object ppField3: TppField
+          FieldAlias = 'valor'
+          FieldName = 'valor'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 19
+          Position = 2
+          TableName = 'df_docfis'
+        end
+        object ppField4: TppField
+          FieldAlias = 'mercadorias'
+          FieldName = 'mercadorias'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 19
+          Position = 3
+          TableName = 'df_docfis'
+        end
+        object ppField5: TppField
+          FieldAlias = 'vendedor'
+          FieldName = 'nome'
+          FieldLength = 150
+          IsDetail = True
+          DisplayWidth = 150
+          Position = 4
+          TableName = 'pessoas'
+        end
+        object ppField6: TppField
+          FieldAlias = 'cliente'
+          FieldName = 'nome_2'
+          FieldLength = 150
+          IsDetail = True
+          DisplayWidth = 150
+          Position = 5
+          TableName = 'pessoas_2'
+        end
+        object ppField7: TppField
+          FieldAlias = 'documento_operacao'
+          FieldName = 'documento_operacao'
+          FieldLength = 38
+          DataType = dtGUID
+          DisplayWidth = 38
+          Position = 6
+          TableName = 'df_docfis'
+        end
+        object ppField8: TppField
+          FieldAlias = 'documento_operacao_codigo'
+          FieldName = 'documento_operacao_codigo'
+          FieldLength = 30
+          DisplayWidth = 30
+          Position = 7
+          TableName = 'df_docfis'
+        end
+        object ppField9: TppField
+          FieldAlias = 'estabelecimento'
+          FieldName = 'estabelecimento'
+          FieldLength = 38
+          IsDetail = True
+          DataType = dtGUID
+          DisplayWidth = 38
+          Position = 8
+          TableName = 'estabelecimentos'
+        end
+        object ppField10: TppField
+          FieldAlias = 'codigo'
+          FieldName = 'codigo'
+          FieldLength = 30
+          IsDetail = True
+          DisplayWidth = 30
+          Position = 9
+          TableName = 'estabelecimentos'
+        end
+        object ppField11: TppField
+          FieldAlias = 'NomeEstabelecimento'
+          FieldName = 'descricao'
+          FieldLength = 150
+          IsDetail = True
+          DisplayWidth = 150
+          Position = 10
+          TableName = 'estabelecimentos'
+        end
+        object ppField12: TppField
+          FieldAlias = 'empresa'
+          FieldName = 'empresa'
+          FieldLength = 38
+          IsDetail = True
+          DataType = dtGUID
+          DisplayWidth = 38
+          Position = 11
+          TableName = 'estabelecimentos'
+        end
+        object ppField13: TppField
+          FieldAlias = 'percentual_comissao'
+          FieldName = 'percentual_comissao'
+          FieldLength = 2
+          IsDetail = True
+          DataType = dtDouble
+          DisplayWidth = 19
+          Position = 12
+          TableName = 'df_vendedores'
+        end
+        object ppField14: TppField
+          FieldAlias = 'Tabela'
+          FieldName = 'codigo_2'
+          FieldLength = 30
+          IsDetail = True
+          DisplayWidth = 30
+          Position = 13
+          TableName = 'tabelasdeprecos'
+        end
+        object ppField15: TppField
+          FieldAlias = 'razaosocial'
+          FieldName = 'razaosocial'
+          FieldLength = 150
+          IsDetail = True
+          DisplayWidth = 150
+          Position = 14
+          TableName = 'empresas'
+        end
+        object ppField16: TppField
+          FieldAlias = 'ValorSemImpostos'
+          FieldName = 'COALESCE_df_docfis_valor'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 19
+          Position = 15
+          TableName = 'df_docfis'
+        end
+        object ppField17: TppField
+          FieldAlias = 'ValorIPI'
+          FieldName = 'COALESCE_df_docfis_valorI'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 19
+          Position = 16
+          TableName = 'df_docfis'
+        end
+        object ppField18: TppField
+          FieldAlias = 'ValorST'
+          FieldName = 'COALESCE_df_docfis_substp'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 19
+          Position = 17
+          TableName = 'df_docfis'
+        end
+        object ppField19: TppField
+          FieldAlias = 'ValorComissao'
+          FieldName = 'df_docfis_valor_df_vended'
+          FieldLength = 2
+          DataType = dtDouble
+          DisplayWidth = 19
+          Position = 18
+          TableName = 'df_docfis'
+        end
+      end
+      object daSQL1: TdaSQL
+        DatabaseName = 'MyCnx'
+        DatabaseType = dtPostgreSQL
+        DataPipelineName = 'df_docfis'
+        Distinct = True
+        IsCaseSensitive = True
+        LinkColor = clMaroon
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT DISTINCT "df_docfis"."numero", '
+          '                "df_docfis"."emissao", '
+          '                "df_docfis"."valor", '
+          '                "df_docfis"."mercadorias", '
+          '                "pessoas"."nome", '
+          '                "pessoas_2"."nome" AS nome_2, '
+          '                "df_docfis"."documento_operacao", '
+          '                "df_docfis"."documento_operacao_codigo", '
+          '                "estabelecimentos"."estabelecimento", '
+          '                "estabelecimentos"."codigo", '
+          '                "estabelecimentos"."descricao", '
+          '                "estabelecimentos"."empresa", '
+          '                "df_vendedores"."percentual_comissao", '
+          '                "tabelasdeprecos"."codigo" AS codigo_2, '
+          '                "empresas"."razaosocial", '
+          
+            '                COALESCE (df_docfis.valor,0) - ( COALESCE (df_do' +
+            'cfis.substprop,0) + COALESCE (df_docfis.valoripi,0)) AS COALESCE' +
+            '_df_docfis_valor, '
+          
+            '                COALESCE (df_docfis.valorIPI,0) AS COALESCE_df_d' +
+            'ocfis_valorI, '
+          
+            '                COALESCE (df_docfis.substprop,0) AS COALESCE_df_' +
+            'docfis_substp, '
+          
+            '                df_docfis.valor * (df_vendedores.percentual_comi' +
+            'ssao/100) AS df_docfis_valor_df_vended'
+          'FROM "ns"."df_docfis" "df_docfis"'
+          '      INNER JOIN "ns"."pessoas" "pessoas" ON '
+          '     ("pessoas"."id" = "df_docfis"."vendedor")'
+          '      INNER JOIN "ns"."pessoas" "pessoas_2" ON '
+          '     ("pessoas_2"."id" = "df_docfis"."id_destinatario")'
+          '      INNER JOIN "ns"."estabelecimentos" "estabelecimentos" ON '
+          
+            '     ("estabelecimentos"."estabelecimento" = "df_docfis"."id_est' +
+            'abelecimento")'
+          '      INNER JOIN "ns"."df_vendedores" "df_vendedores" ON '
+          '     ("df_vendedores"."id_docfis" = "df_docfis"."id")'
+          '      INNER JOIN "ns"."df_linhas" "df_linhas" ON '
+          '     ("df_linhas"."id_docfis" = "df_docfis"."id")'
+          
+            '      INNER JOIN "estoque"."tabelasdeprecos" "tabelasdeprecos" O' +
+            'N '
+          
+            '     ("tabelasdeprecos"."tabeladepreco" = "df_linhas"."id_tabela' +
+            'depreco")'
+          '      INNER JOIN "ns"."empresas" "empresas" ON '
+          '     ("empresas"."empresa" = "estabelecimentos"."empresa")'
+          'WHERE ( "df_docfis"."tipo" = 0 )'
+          '       AND ( "df_docfis"."sinal" = 0 )'
+          '       AND ( "df_docfis"."situacao" = 2 )'
+          'ORDER BY "df_docfis"."vendedor", '
+          '         "estabelecimentos"."descricao", '
+          '         "df_docfis"."emissao", '
+          '         "pessoas_2"."pessoa"')
+        SQLType = sqSQL2
+        object daCalculation1: TdaCalculation
+          ChildType = 8
+          Alias = 'ValorSemImpostos'
+          DataType = dtDouble
+          DisplayWidth = 19
+          FieldAlias = 'valor'
+          FieldLength = 2
+          FieldName = 'valor'
+          SQLFieldName = 'COALESCE_df_docfis_valor'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+          CalcType = dacaExpression
+          Expression = 
+            'COALESCE (df_docfis.valor,0) - ( COALESCE (df_docfis.substprop,0' +
+            ') + COALESCE (df_docfis.valoripi,0))'
+        end
+        object daCalculation2: TdaCalculation
+          ChildType = 8
+          Alias = 'ValorIPI'
+          DataType = dtDouble
+          DisplayWidth = 19
+          FieldAlias = 'valor'
+          FieldLength = 2
+          FieldName = 'valor'
+          SQLFieldName = 'COALESCE_df_docfis_valorI'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+          CalcType = dacaExpression
+          Expression = 'COALESCE (df_docfis.valorIPI,0)'
+        end
+        object daCalculation3: TdaCalculation
+          ChildType = 8
+          Alias = 'ValorST'
+          DataType = dtDouble
+          DisplayWidth = 19
+          FieldAlias = 'valor'
+          FieldLength = 2
+          FieldName = 'valor'
+          SQLFieldName = 'COALESCE_df_docfis_substp'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+          CalcType = dacaExpression
+          Expression = 'COALESCE (df_docfis.substprop,0)'
+        end
+        object daCalculation4: TdaCalculation
+          ChildType = 8
+          Alias = 'ValorComissao'
+          DataType = dtDouble
+          DisplayWidth = 19
+          FieldAlias = 'valor'
+          FieldLength = 2
+          FieldName = 'valor'
+          SQLFieldName = 'df_docfis_valor_df_vended'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+          CalcType = dacaExpression
+          Expression = 'df_docfis.valor * (df_vendedores.percentual_comissao/100)'
+        end
+        object daCriteria1: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Operator = dacoGreaterThanOrEqualTo
+          ParamName = 'DataInicial'
+          object TdaField
+            Alias = 'emissao'
+            AutoSearch = True
+            DataType = dtDate
+            DisplayWidth = 10
+            FieldAlias = 'emissao'
+            FieldLength = 0
+            FieldName = 'emissao'
+            Mandatory = True
+            SQLFieldName = 'emissao'
+            TableAlias = 'df_docfis'
+            TableName = 'df_docfis'
+            TableSQLAlias = 'df_docfis'
+          end
+        end
+        object daCriteria2: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Operator = dacoLessThanOrEqualTo
+          ParamName = 'DataFinal'
+          object TdaField
+            Alias = 'emissao'
+            AutoSearch = True
+            DataType = dtDate
+            DisplayWidth = 10
+            FieldAlias = 'emissao'
+            FieldLength = 0
+            FieldName = 'emissao'
+            Mandatory = True
+            SQLFieldName = 'emissao'
+            TableAlias = 'df_docfis'
+            TableName = 'df_docfis'
+            TableSQLAlias = 'df_docfis'
+          end
+        end
+        object daCriteria3: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Value = '0'
+          object TdaField
+            Alias = 'tipo'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'tipo'
+            FieldLength = 0
+            FieldName = 'tipo'
+            SQLFieldName = 'tipo'
+            TableAlias = 'df_docfis'
+            TableName = 'df_docfis'
+            TableSQLAlias = 'df_docfis'
+          end
+          object TdaNumericValue
+          end
+        end
+        object daCriteria4: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Value = '0'
+          object TdaField
+            Alias = 'sinal'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'sinal'
+            FieldLength = 0
+            FieldName = 'sinal'
+            SQLFieldName = 'sinal'
+            TableAlias = 'df_docfis'
+            TableName = 'df_docfis'
+            TableSQLAlias = 'df_docfis'
+          end
+          object TdaNumericValue
+          end
+        end
+        object daCriteria5: TdaCriteria
+          ChildType = 7
+          Level = 0
+          ParamName = 'Vendedor'
+          object TdaField
+            Alias = 'pessoa'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'pessoa'
+            FieldLength = 30
+            FieldName = 'pessoa'
+            SQLFieldName = 'pessoa'
+            TableAlias = 'pessoas'
+            TableName = 'pessoas'
+            TableSQLAlias = 'pessoas'
+          end
+        end
+        object daCriteria6: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Value = '2'
+          object TdaField
+            Alias = 'situacao'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'situacao'
+            FieldLength = 0
+            FieldName = 'situacao'
+            SQLFieldName = 'situacao'
+            TableAlias = 'df_docfis'
+            TableName = 'df_docfis'
+            TableSQLAlias = 'df_docfis'
+          end
+          object TdaNumericValue
+            Value = 2.000000000000000000
+          end
+        end
+        object daCriteria7: TdaCriteria
+          ChildType = 7
+          Level = 0
+          object TdaField
+            Alias = 'documento_operacao_codigo'
+            AutoSearch = True
+            DisplayWidth = 30
+            FieldAlias = 'documento_operacao_codigo'
+            FieldLength = 30
+            FieldName = 'documento_operacao_codigo'
+            SQLFieldName = 'documento_operacao_codigo'
+            TableAlias = 'df_docfis'
+            TableName = 'df_docfis'
+            TableSQLAlias = 'df_docfis'
+          end
+        end
+        object daField1: TdaField
+          Alias = 'numero'
+          DisplayWidth = 15
+          FieldAlias = 'numero'
+          FieldLength = 15
+          FieldName = 'numero'
+          SQLFieldName = 'numero'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField2: TdaField
+          Alias = 'emissao'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'emissao'
+          FieldLength = 0
+          FieldName = 'emissao'
+          SQLFieldName = 'emissao'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField3: TdaField
+          Alias = 'valor'
+          DataType = dtDouble
+          DisplayWidth = 19
+          FieldAlias = 'valor'
+          FieldLength = 2
+          FieldName = 'valor'
+          SQLFieldName = 'valor'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField4: TdaField
+          Alias = 'mercadorias'
+          DataType = dtDouble
+          DisplayWidth = 19
+          FieldAlias = 'mercadorias'
+          FieldLength = 2
+          FieldName = 'mercadorias'
+          SQLFieldName = 'mercadorias'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField5: TdaField
+          Alias = 'vendedor'
+          DisplayWidth = 150
+          FieldAlias = 'nome'
+          FieldLength = 150
+          FieldName = 'nome'
+          IsDetail = True
+          SQLFieldName = 'nome'
+          TableAlias = 'pessoas'
+          TableName = 'pessoas'
+          TableSQLAlias = 'pessoas'
+        end
+        object daField6: TdaField
+          Alias = 'cliente'
+          DisplayWidth = 150
+          FieldAlias = 'nome'
+          FieldLength = 150
+          FieldName = 'nome'
+          IsDetail = True
+          SQLFieldName = 'nome_2'
+          TableAlias = 'pessoas (2)'
+          TableName = 'pessoas'
+          TableSQLAlias = 'pessoas_2'
+        end
+        object daField7: TdaField
+          Alias = 'documento_operacao'
+          DataType = dtGUID
+          DisplayWidth = 38
+          FieldAlias = 'documento_operacao'
+          FieldLength = 38
+          FieldName = 'documento_operacao'
+          SQLFieldName = 'documento_operacao'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField8: TdaField
+          Alias = 'documento_operacao_codigo'
+          DisplayWidth = 30
+          FieldAlias = 'documento_operacao_codigo'
+          FieldLength = 30
+          FieldName = 'documento_operacao_codigo'
+          SQLFieldName = 'documento_operacao_codigo'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField9: TdaField
+          Alias = 'estabelecimento'
+          DataType = dtGUID
+          DisplayWidth = 38
+          FieldAlias = 'estabelecimento'
+          FieldLength = 38
+          FieldName = 'estabelecimento'
+          IsDetail = True
+          SQLFieldName = 'estabelecimento'
+          TableAlias = 'estabelecimentos'
+          TableName = 'estabelecimentos'
+          TableSQLAlias = 'estabelecimentos'
+        end
+        object daField10: TdaField
+          Alias = 'codigo'
+          DisplayWidth = 30
+          FieldAlias = 'codigo'
+          FieldLength = 30
+          FieldName = 'codigo'
+          IsDetail = True
+          SQLFieldName = 'codigo'
+          TableAlias = 'estabelecimentos'
+          TableName = 'estabelecimentos'
+          TableSQLAlias = 'estabelecimentos'
+        end
+        object daField11: TdaField
+          Alias = 'NomeEstabelecimento'
+          DisplayWidth = 150
+          FieldAlias = 'descricao'
+          FieldLength = 150
+          FieldName = 'descricao'
+          IsDetail = True
+          SQLFieldName = 'descricao'
+          TableAlias = 'estabelecimentos'
+          TableName = 'estabelecimentos'
+          TableSQLAlias = 'estabelecimentos'
+        end
+        object daField12: TdaField
+          Alias = 'empresa'
+          DataType = dtGUID
+          DisplayWidth = 38
+          FieldAlias = 'empresa'
+          FieldLength = 38
+          FieldName = 'empresa'
+          IsDetail = True
+          SQLFieldName = 'empresa'
+          TableAlias = 'estabelecimentos'
+          TableName = 'estabelecimentos'
+          TableSQLAlias = 'estabelecimentos'
+        end
+        object daField13: TdaField
+          Alias = 'percentual_comissao'
+          DataType = dtDouble
+          DisplayWidth = 19
+          FieldAlias = 'percentual_comissao'
+          FieldLength = 2
+          FieldName = 'percentual_comissao'
+          IsDetail = True
+          SQLFieldName = 'percentual_comissao'
+          TableAlias = 'df_vendedores'
+          TableName = 'df_vendedores'
+          TableSQLAlias = 'df_vendedores'
+        end
+        object daField14: TdaField
+          Alias = 'Tabela'
+          DisplayWidth = 30
+          FieldAlias = 'codigo'
+          FieldLength = 30
+          FieldName = 'codigo'
+          IsDetail = True
+          SQLFieldName = 'codigo_2'
+          TableAlias = 'tabelasdeprecos'
+          TableName = 'tabelasdeprecos'
+          TableSQLAlias = 'tabelasdeprecos'
+        end
+        object daField15: TdaField
+          Alias = 'razaosocial'
+          DisplayWidth = 150
+          FieldAlias = 'razaosocial'
+          FieldLength = 150
+          FieldName = 'razaosocial'
+          IsDetail = True
+          SQLFieldName = 'razaosocial'
+          TableAlias = 'empresas'
+          TableName = 'empresas'
+          TableSQLAlias = 'empresas'
+        end
+        object daField16: TdaField
+          ChildType = 2
+          Alias = 'vendedor'
+          DataType = dtGUID
+          DisplayWidth = 38
+          FieldAlias = 'vendedor'
+          FieldLength = 38
+          FieldName = 'vendedor'
+          SQLFieldName = 'vendedor'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField17: TdaField
+          ChildType = 2
+          Alias = 'descricao'
+          DisplayWidth = 150
+          FieldAlias = 'descricao'
+          FieldLength = 150
+          FieldName = 'descricao'
+          SQLFieldName = 'descricao'
+          TableAlias = 'estabelecimentos'
+          TableName = 'estabelecimentos'
+          TableSQLAlias = 'estabelecimentos'
+        end
+        object daField18: TdaField
+          ChildType = 2
+          Alias = 'emissao'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'emissao'
+          FieldLength = 0
+          FieldName = 'emissao'
+          SQLFieldName = 'emissao'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+          TableSQLAlias = 'df_docfis'
+        end
+        object daField19: TdaField
+          ChildType = 2
+          Alias = 'pessoa'
+          DisplayWidth = 30
+          FieldAlias = 'pessoa'
+          FieldLength = 30
+          FieldName = 'pessoa'
+          SQLFieldName = 'pessoa'
+          TableAlias = 'pessoas (2)'
+          TableName = 'pessoas'
+          TableSQLAlias = 'pessoas_2'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'df_docfis'
+          JoinType = dajtNone
+          OwnerName = 'ns'
+          SQLAlias = 'df_docfis'
+          TableAlias = 'df_docfis'
+          TableName = 'df_docfis'
+        end
+        object daTable2: TdaTable
+          ChildType = 5
+          Alias = 'pessoas'
+          OwnerName = 'ns'
+          SQLAlias = 'pessoas'
+          TableAlias = 'pessoas'
+          TableName = 'pessoas'
+          object daTableJoin1: TdaTableJoin
+            ChildType = 6
+            object daField21: TdaField
+              ChildType = 3
+              Alias = 'id'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id'
+              FieldLength = 38
+              FieldName = 'id'
+              SQLFieldName = 'id'
+              TableAlias = 'pessoas'
+              TableName = 'pessoas'
+              TableSQLAlias = 'pessoas'
+            end
+            object daField20: TdaField
+              ChildType = 4
+              Alias = 'vendedor'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'vendedor'
+              FieldLength = 38
+              FieldName = 'vendedor'
+              SQLFieldName = 'vendedor'
+              TableAlias = 'df_docfis'
+              TableName = 'df_docfis'
+              TableSQLAlias = 'df_docfis'
+            end
+          end
+        end
+        object daTable3: TdaTable
+          ChildType = 5
+          Alias = 'pessoas'
+          OwnerName = 'ns'
+          SQLAlias = 'pessoas_2'
+          TableAlias = 'pessoas (2)'
+          TableName = 'pessoas'
+          object daTableJoin2: TdaTableJoin
+            ChildType = 6
+            object daField23: TdaField
+              ChildType = 3
+              Alias = 'id'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id'
+              FieldLength = 38
+              FieldName = 'id'
+              SQLFieldName = 'id'
+              TableAlias = 'pessoas (2)'
+              TableName = 'pessoas'
+              TableSQLAlias = 'pessoas_2'
+            end
+            object daField22: TdaField
+              ChildType = 4
+              Alias = 'id_destinatario'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id_destinatario'
+              FieldLength = 38
+              FieldName = 'id_destinatario'
+              SQLFieldName = 'id_destinatario'
+              TableAlias = 'df_docfis'
+              TableName = 'df_docfis'
+              TableSQLAlias = 'df_docfis'
+            end
+          end
+        end
+        object daTable4: TdaTable
+          ChildType = 5
+          Alias = 'estabelecimentos'
+          OwnerName = 'ns'
+          SQLAlias = 'estabelecimentos'
+          TableAlias = 'estabelecimentos'
+          TableName = 'estabelecimentos'
+          object daTableJoin3: TdaTableJoin
+            ChildType = 6
+            object daField25: TdaField
+              ChildType = 3
+              Alias = 'estabelecimento'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'estabelecimento'
+              FieldLength = 38
+              FieldName = 'estabelecimento'
+              SQLFieldName = 'estabelecimento'
+              TableAlias = 'estabelecimentos'
+              TableName = 'estabelecimentos'
+              TableSQLAlias = 'estabelecimentos'
+            end
+            object daField24: TdaField
+              ChildType = 4
+              Alias = 'id_estabelecimento'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id_estabelecimento'
+              FieldLength = 38
+              FieldName = 'id_estabelecimento'
+              SQLFieldName = 'id_estabelecimento'
+              TableAlias = 'df_docfis'
+              TableName = 'df_docfis'
+              TableSQLAlias = 'df_docfis'
+            end
+          end
+        end
+        object daTable5: TdaTable
+          ChildType = 5
+          Alias = 'df_vendedores'
+          OwnerName = 'ns'
+          SQLAlias = 'df_vendedores'
+          TableAlias = 'df_vendedores'
+          TableName = 'df_vendedores'
+          object daTableJoin4: TdaTableJoin
+            ChildType = 6
+            object daField27: TdaField
+              ChildType = 3
+              Alias = 'id_docfis'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id_docfis'
+              FieldLength = 38
+              FieldName = 'id_docfis'
+              SQLFieldName = 'id_docfis'
+              TableAlias = 'df_vendedores'
+              TableName = 'df_vendedores'
+              TableSQLAlias = 'df_vendedores'
+            end
+            object daField26: TdaField
+              ChildType = 4
+              Alias = 'id'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id'
+              FieldLength = 38
+              FieldName = 'id'
+              SQLFieldName = 'id'
+              TableAlias = 'df_docfis'
+              TableName = 'df_docfis'
+              TableSQLAlias = 'df_docfis'
+            end
+          end
+        end
+        object daTable6: TdaTable
+          ChildType = 5
+          Alias = 'df_linhas'
+          OwnerName = 'ns'
+          SQLAlias = 'df_linhas'
+          TableAlias = 'df_linhas'
+          TableName = 'df_linhas'
+          object daTableJoin5: TdaTableJoin
+            ChildType = 6
+            object daField29: TdaField
+              ChildType = 3
+              Alias = 'id_docfis'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id_docfis'
+              FieldLength = 38
+              FieldName = 'id_docfis'
+              SQLFieldName = 'id_docfis'
+              TableAlias = 'df_linhas'
+              TableName = 'df_linhas'
+              TableSQLAlias = 'df_linhas'
+            end
+            object daField28: TdaField
+              ChildType = 4
+              Alias = 'id'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id'
+              FieldLength = 38
+              FieldName = 'id'
+              SQLFieldName = 'id'
+              TableAlias = 'df_docfis'
+              TableName = 'df_docfis'
+              TableSQLAlias = 'df_docfis'
+            end
+          end
+        end
+        object daTable7: TdaTable
+          ChildType = 5
+          Alias = 'tabelasdeprecos'
+          OwnerName = 'estoque'
+          SQLAlias = 'tabelasdeprecos'
+          TableAlias = 'tabelasdeprecos'
+          TableName = 'tabelasdeprecos'
+          object daTableJoin6: TdaTableJoin
+            ChildType = 6
+            object daField31: TdaField
+              ChildType = 3
+              Alias = 'tabeladepreco'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'tabeladepreco'
+              FieldLength = 38
+              FieldName = 'tabeladepreco'
+              SQLFieldName = 'tabeladepreco'
+              TableAlias = 'tabelasdeprecos'
+              TableName = 'tabelasdeprecos'
+              TableSQLAlias = 'tabelasdeprecos'
+            end
+            object daField30: TdaField
+              ChildType = 4
+              Alias = 'id_tabeladepreco'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'id_tabeladepreco'
+              FieldLength = 38
+              FieldName = 'id_tabeladepreco'
+              SQLFieldName = 'id_tabeladepreco'
+              TableAlias = 'df_linhas'
+              TableName = 'df_linhas'
+              TableSQLAlias = 'df_linhas'
+            end
+          end
+        end
+        object daTable8: TdaTable
+          ChildType = 5
+          Alias = 'empresas'
+          OwnerName = 'ns'
+          SQLAlias = 'empresas'
+          TableAlias = 'empresas'
+          TableName = 'empresas'
+          object daTableJoin7: TdaTableJoin
+            ChildType = 6
+            object daField33: TdaField
+              ChildType = 3
+              Alias = 'empresa'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'empresa'
+              FieldLength = 38
+              FieldName = 'empresa'
+              SQLFieldName = 'empresa'
+              TableAlias = 'empresas'
+              TableName = 'empresas'
+              TableSQLAlias = 'empresas'
+            end
+            object daField32: TdaField
+              ChildType = 4
+              Alias = 'empresa'
+              DataType = dtGUID
+              DisplayWidth = 38
+              FieldAlias = 'empresa'
+              FieldLength = 38
+              FieldName = 'empresa'
+              SQLFieldName = 'empresa'
+              TableAlias = 'estabelecimentos'
+              TableName = 'estabelecimentos'
+              TableSQLAlias = 'estabelecimentos'
+            end
+          end
+        end
+      end
+    end
+    object daUniDacQueryDataView2: TdaUniDacQueryDataView
+      UserName = 'Query_pessoas'
+      Height = 126
+      Left = 437
+      NameColumnWidth = 105
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 10
+      TypeColumnWidth = 52
+      Width = 224
+      AutoSearchTabOrder = 0
+      object pessoas: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'pessoas'
+        object ppField1: TppField
+          FieldAlias = 'pessoa'
+          FieldName = 'pessoa'
+          FieldLength = 30
+          DisplayWidth = 30
+          Position = 0
+          TableName = 'pessoas'
+        end
+        object ppField2: TppField
+          FieldAlias = 'nome'
+          FieldName = 'nome'
+          FieldLength = 150
+          DisplayWidth = 150
+          Position = 1
+          TableName = 'pessoas'
+        end
+      end
+      object daSQL2: TdaSQL
+        DatabaseName = 'MyCnx'
+        DatabaseType = dtPostgreSQL
+        DataPipelineName = 'pessoas'
+        IsCaseSensitive = True
+        LinkColor = clNavy
+        LinkType = ltMagicSQL
+        MaxSQLFieldAliasLength = 25
+        SQLText.Strings = (
+          'SELECT "pessoas"."pessoa", "pessoas"."nome"'
+          'FROM "ns"."pessoas" "pessoas"'
+          'WHERE ('#39'c'#39' <> '#39'c'#39' ) AND ('
+          '      ( "pessoas"."vendedorativado" = 1 ))')
+        SQLType = sqSQL2
+        object daCriteria1: TdaCriteria
+          ChildType = 7
+          Level = 0
+          Value = '1'
+          object TdaField
+            Alias = 'vendedorativado'
+            DataType = dtInteger
+            DisplayWidth = 10
+            FieldAlias = 'vendedorativado'
+            FieldLength = 0
+            FieldName = 'vendedorativado'
+            SQLFieldName = 'vendedorativado'
+            TableAlias = 'pessoas'
+            TableName = 'pessoas'
+            TableSQLAlias = 'pessoas'
+          end
+          object TdaNumericValue
+            Value = 1.000000000000000000
+          end
+        end
+        object daField1: TdaField
+          Alias = 'pessoa'
+          DisplayWidth = 30
+          FieldAlias = 'pessoa'
+          FieldLength = 30
+          FieldName = 'pessoa'
+          SQLFieldName = 'pessoa'
+          TableAlias = 'pessoas'
+          TableName = 'pessoas'
+          TableSQLAlias = 'pessoas'
+        end
+        object daField2: TdaField
+          Alias = 'nome'
+          DisplayWidth = 150
+          FieldAlias = 'nome'
+          FieldLength = 150
+          FieldName = 'nome'
+          SQLFieldName = 'nome'
+          TableAlias = 'pessoas'
+          TableName = 'pessoas'
+          TableSQLAlias = 'pessoas'
+        end
+        object daTable1: TdaTable
+          ChildType = 5
+          Alias = 'pessoas'
+          JoinType = dajtNone
+          OwnerName = 'ns'
+          SQLAlias = 'pessoas'
+          TableAlias = 'pessoas'
+          TableName = 'pessoas'
+        end
+      end
+    end
+  end
+  object raCodeModule2: TraCodeModule
+    object raProgramInfo4: TraProgramInfo
+      raClassName = 'TraVarProgram'
+      raProgram.ChildType = 17
+      raProgram.ProgramName = 'Variables'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variables;'#13#10'var'#13#10'  LeftNomeIdentado: Integer;'#13#10'  statu' +
+        'sZebra: Boolean;'#13#10#13#10'begin'#13#10#13#10'end;'#13#10
+      raProgram.CaretPos = (
+        0
+        0)
+    end
+    object raProgramInfo5: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'ReportBeforePrint'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure ReportBeforePrint;'#13#10'begin'#13#10'   LeftNomeIdentado := Left' +
+        'NomeIdentado;'#13#10'end;'#13#10
+      raProgram.ComponentName = 'Report'
+      raProgram.EventName = 'BeforePrint'
+      raProgram.EventID = 1
+      raProgram.CaretPos = (
+        3
+        3)
+    end
+    object raProgramInfo6: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'HeaderBeforePrint'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure HeaderBeforePrint;'#13#10'begin'#13#10'   statusZebra := True;'#13#10'en' +
+        'd;'#13#10
+      raProgram.ComponentName = 'Header'
+      raProgram.EventName = 'BeforePrint'
+      raProgram.EventID = 24
+      raProgram.CaretPos = (
+        0
+        0)
+    end
+    object raProgramInfo7: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'ReportOnAutoSearchDialogClose'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure ReportOnAutoSearchDialogClose;'#13#10'var'#13#10'  ValorSearch : T' +
+        'ppAutoSearchField;  '#13#10'  DataInicial,'#13#10'  DataFinal   : String;'#13#10'b' +
+        'egin'#13#10'  lblPeriodo.Caption := '#39#39';'#13#10'  ValorSearch := Report.AutoS' +
+        'earchFields[1];'#13#10'  DataInicial := ValorSearch.Values[0];'#13#10'  '#13#10'  ' +
+        'ValorSearch := Report.AutoSearchFields[2];'#13#10'  DataFinal   := Val' +
+        'orSearch.Values[0];  '#13#10'  '#13#10'  lblPeriodo.Caption := '#39'Per'#237'odo de '#39 +
+        '+DataInicial+'#39' at'#233' '#39'+DataFinal;'#13#10'end;'#13#10
+      raProgram.ComponentName = 'Report'
+      raProgram.EventName = 'OnAutoSearchDialogClose'
+      raProgram.EventID = 11
+      raProgram.CaretPos = (
+        38
+        12)
+    end
+  end
+  object ppDesignLayers12: TppDesignLayers
+    object ppDesignLayer12: TppDesignLayer
+      UserName = 'BandLayer2'
+      LayerType = ltBanded
+      Index = 0
+    end
+  end
+  object ppParameterList1: TppParameterList
+    object ppParameter1: TppParameter
+      AutoSearchSettings.Enabled = True
+      AutoSearchSettings.FieldAlias = 'emissao'
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchOperator = soGreaterThanOrEqualTo
+      DataType = dtDate
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = 43617d
+      UserName = 'DataInicial'
+    end
+    object ppParameter2: TppParameter
+      AutoSearchSettings.Enabled = True
+      AutoSearchSettings.FieldAlias = 'emissao'
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchOperator = soLessThanOrEqualTo
+      DataType = dtDate
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = 43646d
+      UserName = 'DataFinal'
+    end
+    object ppParameter3: TppParameter
+      AutoSearchSettings.Enabled = True
+      AutoSearchSettings.FieldAlias = 'pessoa'
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = False
+      DataType = dtString
+      LookupSettings.NameField = 'nome'
+      LookupSettings.DisplayType = dtValueAndName
+      LookupSettings.SortOrder = soValue
+      LookupSettings.ValueField = 'pessoa'
+      LookupSettings.DataPipelineName = 'pessoas'
+      Value = ''
+      UserName = 'Vendedor'
+    end
+  end
+end

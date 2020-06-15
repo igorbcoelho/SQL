@@ -1,0 +1,9 @@
+Situação de Títulos a Receber:
+
+Aberto     = 0
+Quitado    = 1
+Debito     = 2
+Cancelado  = 3
+Protestado = 4
+Estornado  = 5
+Agendado   = 6

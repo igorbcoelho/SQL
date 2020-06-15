@@ -1,0 +1,21 @@
+procedure DetailBeforePrint;
+
+var
+   iDentifica, 
+   iClassifica : integer;
+   
+begin
+   {Identifica se é Cliente ou Lead}
+   iDentifica := clientes['clientes.leadativado'];
+   {Identifica se é lead ou lead aprovado}
+   iClassifica := clientes['clientes.tipo'];
+   
+   if (iDentifica = 0) then
+        lblClassificacao.Caption := 'Cliente'
+		
+   else if ((iDentifica = 1) and (iClassifica = 0)) then
+        lblClassificacao.Caption := 'Lead'	
+		
+   else if ((iDentifica = 1) and (iClassifica = 1)) then
+        lblClassificacao.Caption := 'Lead Aprovado';   
+end;

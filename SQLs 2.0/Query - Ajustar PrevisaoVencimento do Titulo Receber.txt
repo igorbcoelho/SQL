@@ -1,0 +1,4 @@
+UPDATE erp.titulosreceber
+SET previsaovencimento = previsaovencimento + 1
+WHERE situacao = 0
+AND previsaovencimento = vencimento

@@ -1,0 +1,11 @@
+INSERT INTO "C:\Nasajon\Sistemas\Controll\Empresas\002\cwnotfis.db"
+SELECT * FROM "C:\Nasajon\Sistemas\Controll\Empresas\003\cwnotfis.db"
+
+
+select Item, Estoque, SaldoReservado AS TotalEntradas, SaldoReservado AS TotalSaidas, (TotalEntradas - TotalSaidas) AS SaldoAnterior, 
+SaldoReservado AS SaldoCompra, SaldoReservado AS SaldoVenda, SaldoReservado from cwsalest
+
+
+
+INSERT INTO "N:\Sistemas\Controll\Empresas\044\cwsalest.db"
+SELECT * FROM "N:\044.db"

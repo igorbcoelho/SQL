@@ -1,0 +1,13 @@
+DO
+$$
+DECLARE
+	r RECORD;
+BEGIN
+	
+	FOR r IN (select rolname from pg_roles where rolname ilike '%\_%' AND rolname <> 'BPL_USER' AND rolname <> 'group_nasajon' LIMIT 500) LOOP
+
+		EXECUTE 'DROP ROLE ' || r.rolname;
+
+	END LOOP;
+END
+$$;

@@ -1,0 +1,7 @@
+-- LISTAR CLIENTES COM ITENS DE COBRANÇA ATIVOS COM VALOR MAS SEM VIGENCIA
+select p.codigo, p.nomefantasia, ic.vigencia, ic.proximacobranca, s.codigo, CASE(ic.situacao) WHEN '0' THEN 'ATIVO' WHEN '1' THEN 'SUSPENSO' WHEN '3' THEN 'CANCELADO' END, ic.valortotal 
+from  erp.participantes p 
+inner join erp.itenscobrancas ic on (p.participante = ic.participante)
+inner join erp.servicos s on (s.servico = ic.servico)
+where ic.situacao = 0 and ic.vigencia < '2015-09-01' and ic.valortotal <> 0
+order by p.nomefantasia

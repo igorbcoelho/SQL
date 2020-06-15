@@ -1,0 +1,181 @@
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24360000' and '24370001')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24358165' and '24370460')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24360025' and '24370700')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24310000' and '24315420')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24310020' and '24370315')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24340000' and '24358050')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24310370' and '24358730')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24346020' and '24358750')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24342675' and '24344581')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24348000' and '24348360')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24330050' and '24330450')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24320260' and '24330030')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24330000' and '24340100')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);
+
+UPDATE erp.participantes SET vendedor = '46386' WHERE participante IN
+(
+	SELECT P.participante
+	FROM erp.participantes P 
+	INNER JOIN erp.enderecos E ON
+	(P.participante = E.participante)
+	WHERE ((E.tipoendereco = 0 
+	AND E.uf = 'RJ'
+	AND E.cep between '24900001' and '24945000')
+	AND (P.clienteativado = 1
+	OR P.leadativado = 1))
+);

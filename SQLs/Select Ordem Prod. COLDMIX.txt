@@ -1,0 +1,7 @@
+Select numero, emissao, producao, item
+from cwordpro 
+inner join 
+cwitorpr on
+(cwordpro.ordem = cwitorpr.ordem)
+where
+cwitorpr.SubItem = "codigo_do_item"

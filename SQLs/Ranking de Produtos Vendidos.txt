@@ -1,0 +1,11 @@
+SELECT Produto.sRefControll, Produto.sReferencia, 
+       Produto.sDescricao, SUM(ItemVenda.nQuantidade)
+FROM ItemVenda
+      INNER JOIN Vendas ON 
+     (Vendas.iCodVenda = ItemVenda.iCodVenda)
+      INNER JOIN Produto ON 
+     (Produto.idProduto = ItemVenda.iProduto)
+WHERE Vendas.sStatus <> 'C'
+/* AND (Vendas.dDataVenda BETWEEN 'XX/XX/XXXX' AND 'XX/XX/XXXX') */
+GROUP BY Produto.sRefControll, Produto.sReferencia, Produto.sDescricao
+ORDER BY SUM(ItemVenda.nQuantidade) DESC

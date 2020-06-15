@@ -1,0 +1,9 @@
+Lista Notas Eletronicas sem vínculo com clientes
+==================================================
+
+select * from cwnofiel 
+left outer join cwclient on 
+(cwclient.pessoa = cwnofiel.cliente) 
+where 
+(cwclient.pessoa is null)
+and (tipodestinatario=0)

@@ -1,0 +1,17 @@
+
+DO
+$$
+DECLARE
+	r RECORD;
+BEGIN
+
+	FOR r IN (SELECT produto FROM estoque.produtos) LOOP -- SE NECESSÁRIO INSIRA UMA CONDIÇÃO COM A CLÁUSULA WHERE
+
+		EXECUTE 'INSERT INTO estoque.produtosipienquadramentos (produto, grupocst, ipienquadramento) VALUES (' 
+		|| '''' ||  r.produto || '''' || ', ' || '''' || (SELECT grupocst FROM ns.ipienquadramentos WHERE codigo = '999') -- TROCAR PARA O CÓDIGO DE CST REQUERIDO PELO CLIENTE
+		|| '''' || ' , ' || '''' || (SELECT ipienquadramento FROM ns.ipienquadramentos WHERE codigo = '999') || '''' || ')' ; -- TROCAR PARA O CÓDIGO DE CST REQUERIDO PELO CLIENTE
+
+	END LOOP;
+
+END
+$$;

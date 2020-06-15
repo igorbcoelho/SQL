@@ -1,0 +1,42 @@
+CASE 
+WHEN SITUACAO = 0 THEN 'Aberto'
+WHEN SITUACAO = 1 THEN 'Quitado'
+WHEN SITUACAO = 2 THEN 'Em Débito'
+WHEN SITUACAO = 3 THEN 'Cancelado'
+WHEN SITUACAO = 4 THEN 'Protestado'
+WHEN SITUACAO = 5 THEN 'Estornado'
+WHEN SITUACAO = 6 THEN 'Agendado'
+WHEN SITUACAO = 7 THEN 'Suspenso'
+WHEN SITUACAO = 8 THEN 'Aberto Descontado'
+WHEN SITUACAO = 9 THEN 'Cobrança Duvidosa'
+ELSE NULL::TEXT END
+
+
+
+CASE
+WHEN ORIGEM = 0 THEN 'Manutenção'
+WHEN ORIGEM = 1 THEN 'Pedido'
+WHEN ORIGEM = 2 THEN 'RPS'
+WHEN ORIGEM = 3 THEN 'Contrato':
+WHEN ORIGEM = 4 THEN 'Scritta'
+WHEN ORIGEM = 5 THEN 'Nota Fiscal Serviço'
+WHEN ORIGEM = 6 THEN 'Nota Fiscal Eletrônica'
+WHEN ORIGEM = 7 THEN 'Lançamento Fiscal'
+WHEN ORIGEM = 8 THEN 'Documentos'
+WHEN ORIGEM = 9 THEN 'Nota Serviços Publicos'
+WHEN ORIGEM = 10 THEN 'Nota Prestação Serviços'
+WHEN ORIGEM = 11 THEN 'Conhecimento Transporte'
+WHEN ORIGEM = 12 THEN 'GR ICMS'
+WHEN ORIGEM = 13 THEN 'GR ISS'
+WHEN ORIGEM = 14 THEN 'GNRE'
+WHEN ORIGEM = 15 THEN 'DARF'
+WHEN ORIGEM = 16 THEN 'GPS'
+WHEN ORIGEM = 17 THEN 'Outros Documentos'
+WHEN ORIGEM = 18 THEN 'Folha Persona'
+WHEN ORIGEM = 19 THEN 'Pagamento Persona'
+WHEN ORIGEM = 20 THEN 'Guia Persona'
+WHEN ORIGEM = 21 THEN 'Nota Controller'
+WHEN ORIGEM = 22 THEN 'Importação'
+WHEN ORIGEM = 23 THEN 'Previsão'
+WHEN ORIGEM = 24 THEN 'Fatura'
+ELSE NULL::TEXT END

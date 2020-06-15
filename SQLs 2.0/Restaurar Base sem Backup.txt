@@ -1,0 +1,18 @@
+
+RECUPERANDO BASE DE DADOS ATRAVÉS DA PASTA "DATA"
+==================================================
+
+Problema:
+A instalação do PostgreSQL ficou danificada e desta forma não é possível ligar ao servidor de dados para efectuar uma cópia de segurança das bases de dados existentes...
+
+Solução:
+1. Copiar a pasta "data" (\pasta de instalação postgresql\versao postgresql\data) para "C:\" (p.e)
+2. Remover o PostgreSQL da lista de Programas, através do Painel de Controle
+3. Eliminar o utilizador postgres
+3.1. Abrir uma linha de comandos e executar o seguinte: "net user postgres /delete"
+4. Eliminar a pasta de instalação do PostgreSQL
+5. Re-instalar o Postgres (com a mesma versão)
+6. Abrir uma linha de comando e executar: pg_ctl start -D "c:\data"
+
+Conclusão:
+Desta forma já é possível abrir o PgAdmin III (gestor gráfico do PostgreSQL), conectar-se ao servidor de dados e realizar cópias de segurança das suas bases de dados.

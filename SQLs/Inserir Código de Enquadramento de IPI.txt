@@ -1,0 +1,18 @@
+​​
+Passo 1 - Popular a tabela cwiteestcompl:
+=========================================
+
+INSERT INTO cwiteestcompl (item) ​​SELECT item ​​FROM cwiteest
+
+
+Passo 2 - Inserir o código de Enquadramento:
+============================================
+
+// Colocando '999' para todos
+
+​​UPDATE cwiteestcompl SET campoS1 = '​​999'
+
+// Colocando o código que se quer, filtrando por NCM
+
+UPDATE cwiteestcompl SET campoS1 = '​​Cod. Enquadramento' ​​WHERE item ​IN​ ​(SELECT item FROM cwiteest WHERE TIPI = '​​NCM')​
+

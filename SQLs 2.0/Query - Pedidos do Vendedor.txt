@@ -1,0 +1,25 @@
+  SELECT s.CODIGO, s.Descricao, tv.VENDEDOR, vd.nomefantasia, COUNT(*)
+  FROM ( SELECT pv.*
+           FROM pedidosvendasservicosporvendedores pv
+           JOIN (SELECT  pv.PEDIDOVENDASERVICO, MAX(pv.PERCENTUALPARTICIPACAO) PCT
+		   FROM pedidosvendasservicosporvendedores pv
+		   JOIN pedidosvendasservicos p
+		     ON pv.PEDIDOVENDASERVICO = p.PEDIDOVENDASERVICO
+		  GROUP BY pv.PEDIDOVENDASERVICO) t
+             ON t.PEDIDOVENDASERVICO = pv.PEDIDOVENDASERVICO
+            AND t.PCT = pv.PERCENTUALPARTICIPACAO
+          ORDER BY pv.PEDIDOVENDASERVICO) tv
+  JOIN itenspedidosvendasservicos IP
+    ON tv.PEDIDOVENDASERVICO = ip.PEDIDOVENDASERVICO
+  JOIN pedidosvendasservicos p
+    ON p.PEDIDOVENDASERVICO = ip.PEDIDOVENDASERVICO
+  JOIN SERVICOS s
+    ON IP.SERVICO = S.SERVICO
+  JOIN vendedores vd
+    ON tv.VENDEDOR = vd.VENDEDOR
+  WHERE p.EMISSAO >= '20140301' AND p.EMISSAO < '20140401'
+    AND p.SITUACAO = 2
+    AND p.PROPOSTA IS NOT NULL
+    AND tv.VENDEDOR <> 169
+  GROUP BY s.CODIGO, s.Descricao, tv.VENDEDOR, vd.nomefantasia
+  ORDER BY vd.nomefantasia, COUNT(*) DESC

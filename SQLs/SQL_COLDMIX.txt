@@ -1,0 +1,41 @@
+SELECT Item, SUM(Quantidade) as Total
+FROM cwmovest
+WHERE ( Data >= '01/01/2008' )
+       AND ( Data <= '12/31/2008' )
+GROUP BY Item
+ORDER BY Item
+
+---------------------------------------------------
+
+SELECT Item, sum(Quantidade) as Total
+FROM cwitesno
+INNER JOIN
+cwnotfis on
+(cwitesno.nota = cwnotfis.nota)
+and 
+( cwnotfis.emissao >= '01/01/2002' and cwnotfis.emissao <= '12/31/2002' )
+where item is not null
+GROUP BY Item
+order by item
+
+-----------------------------------------------------------------------------
+
+SELECT Item, sum(Quantidade) as Total
+FROM itelan09
+INNER JOIN
+lanfis09 ON
+(itelan09.lancamento = lanfis09.lancamento)
+and 
+( lanfis09.emissao >= '01/01/2009' and lanfis09.emissao <= '12/31/2009' )
+where item is not null
+GROUP BY Item
+order by item
+
+-----------------------------------------------------------------------------
+
+SELECT a.Item , (a.total-b.total) t
+FROM 'C:\COLDMIX\IN2002.db' a,
+
+'C:\COLDMIX\IL2002' b
+
+where (a.Item = b.Item) and a.total <> b.total

@@ -1,0 +1,47 @@
+--BUSCAR PONTOS DE FIDELIDADE
+SELECT RASTRO, USUARIO, DATA, NEWVALUE->>'pontofidelidade' AS FIDELIDADE 
+FROM NS.RASTROS 
+WHERE TABELA = 'participantes' AND NEWVALUE->>'participante' = '36723'
+ORDER BY DATA;
+
+
+--BUSCAR TÍTULOS PELO NOSSO NUMERO (acrescentar zero à esquerda)
+select data, usuario, operacao, oldvalue
+from ns.rastros where tabela = 'titulosreceber' and oldvalue->>'nossonumero' = '01095234'
+order by data; 
+
+--APÓS A QUERY ACIMA, LOCALIZAR O CAMPO PARTICIPANTE NO oldvalue E INSERIR O ID NA QUERY ABAIXO:
+select codigo, razaosocial from erp.participantes where participante = "inserir ID"
+
+
+--BUSCAR PROPOSTAS
+select data, usuario, operacao, oldvalue, newvalue
+from ns.rastros where tabela = 'propostas' and newvalue->>'proposta' = '30728'
+order by data; 
+
+
+--BUSCAR PEDIDOS PELA PROPOSTA
+select data, usuario, operacao, oldvalue, newvalue
+from ns.rastros where tabela = 'pedidosvendasservicos' and newvalue->>'proposta' = '26543'
+order by data; 
+
+
+--BUSCAR PEDIDOS
+select data, usuario, operacao, oldvalue, newvalue
+from ns.rastros where tabela = 'pedidosvendasservicos' and newvalue->>'numero' = '275572'
+order by data; 
+
+
+--BUSCAR CLIENTES COM FCNAUT NA DATA
+select data, usuario, newvalue->>'codigo' AS Codigo, newvalue->>'razaosocial' AS Codigo
+from ns.rastros where tabela = 'participantes' and newvalue->>'tipocliente' = '19' and data between '13/07/2015 00:00:01' and '13/07/2015 23:59:01'
+order by data; 
+
+
+-- BUSCAR TÍTULOS CANCELADOS NA DATA
+select distinct newvalue->>'numero' AS Numero, newvalue->>'participante' AS Participante, p.codigo, p.razaosocial
+from ns.rastros r
+inner join erp.participantes p ON
+(p.participante = CAST(coalesce(newvalue->>'participante') AS integer))
+where tabela = 'titulosreceber' and newvalue->>'situacao' = '3' and data between '13/07/2015 00:00:01' and '13/07/2015 23:59:01'
+order by newvalue->>'participante'

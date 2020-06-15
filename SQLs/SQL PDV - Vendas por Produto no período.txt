@@ -1,0 +1,10 @@
+SELECT Produto.sRefControll, Produto.sDescricao, ItemVenda.nQuantidade, Vendas.dDataVenda, Vendas.sNROCupomNota  
+FROM itemvenda
+INNER JOIN vendas ON
+(itemvenda.icodvenda = vendas.icodvenda)
+INNER JOIN produto ON
+(itemvenda.iProduto = produto.idproduto)
+WHERE produto.sRefControll = 'ITEM08' AND
+Vendas.sStatus = 'F' AND
+(vendas.dDataVenda >= '01/01/2013' AND vendas.dDataVenda <= '01/05/2013')
+ORDER BY Produto.SrefControll, Vendas.dDataVenda

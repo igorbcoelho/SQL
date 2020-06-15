@@ -1,0 +1,15 @@
+Select replace (sCodCliente, '.', '')
+
+
+Update Clientes set sCodCliente = replace(sCodCliente,'.','')
+
+Update Clientes set sCodCliente = replace(sCodCliente,'/','')
+
+Update Clientes set sCodCliente = replace(sCodCliente,'-','')
+
+Update Clientes set sCodCliente = replace(sCodCliente,' ','')
+
+Update Clientes set sCodCliente = replace(sCodCliente,'_','')
+
+select * , isnumeric(sCodCliente) from clientes
+where isnumeric(sCodCliente) = 0

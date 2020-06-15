@@ -1,0 +1,9 @@
+-- Retorna todas as tabelas em que a coluna existe
+SELECT TABLE_NAME
+FROM IGOR.INFORMATION_SCHEMA.COLUMNS
+WHERE COLUMN_NAME = 'iCodCliente';
+
+-- Retorna todas as colunas de uma tabela ou de toda a base de dados
+SELECT TABLE_NAME, COLUMN_NAME, COLUMNPROPERTY(OBJECT_ID(TABLE_SCHEMA + '.' + TABLE_NAME), COLUMN_NAME, 'ColumnID') AS COLUMN_ID
+FROM IGOR.INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'Vendas';

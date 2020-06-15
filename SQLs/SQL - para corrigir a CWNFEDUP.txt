@@ -1,0 +1,16 @@
+
+update cwnfedup set NumeroDuplicata =  ( select cwnofiel.NumeroDF + '.0' + CAST( 
+
+cwnfedup.Numero as char(10) ) from cwnofiel WHERE cwnofiel.DataHoraNFE = 
+
+cwnfedup.DataHoraNFE  )  
+WHERE ( cwnfedup.Numero <= 9 )
+
+---------------------------------------------------------------------------------
+
+update cwnfedup set NumeroDuplicata =  ( select cwnofiel.NumeroDF + '.' + CAST( 
+
+cwnfedup.Numero as char(10) ) from cwnofiel WHERE cwnofiel.DataHoraNFE = 
+
+cwnfedup.DataHoraNFE  )  
+WHERE ( cwnfedup.Numero >= 10 )

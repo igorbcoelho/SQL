@@ -1,0 +1,79 @@
+
+
+SQL para apagar o vinculo do item de estoque com a nf-e 000000024
+-----------------------------------------------------------------
+
+
+delete from cwitenfe where item in ( select item from cwitenfe 
+
+inner join
+
+cwnofiel on
+
+(cwnofiel.datahoranfe = cwitenfe.datahoranfe)
+
+and cwnofiel.numeroDF = '000000024')
+
+===============================================================================================
+
+
+SQL para apagar a nf-e 000000024
+---------------------------------
+
+
+delete from cwnofiel where serieDF = '001' and numeroDF = '000000024'
+
+
+===============================================================================================
+
+
+SQL para apagar vinculo do item do lançamento fiscal da nf-e 000000024
+----------------------------------------------------------------------
+ 
+
+delete from itelan09 where lancamento in (select lancamento from lanfis09
+
+inner join 
+
+itelan09 on 
+
+(itelan09.lancamento= lanfis09.lancamento)
+
+and lanfis09.documento = '000000024')
+
+
+===============================================================================================
+
+SQL para apagar o lançamento fiscal da nf-e 000000024
+-----------------------------------------------------
+
+delete from lanfis09 where documento = '000000024'
+
+
+===============================================================================================
+===============================================================================================
+
+..:: selects utilizados para criação da querys de deleção ::..
+ 
+
+select lanfis09.documento, lanfis09.cancelado, itelan09.item, itelan09.descricao from lanfis09
+
+inner join 
+
+itelan09 on 
+
+(itelan09.lancamento= lanfis09.lancamento)
+
+and lanfis09.documento = '000000024'
+
+
+
+select item from cwitenfe 
+
+inner join
+
+cwnofiel on
+
+(cwnofiel.datahoranfe = cwitenfe.datahoranfe)
+
+and cwnofiel.numeroDF = '000000024'

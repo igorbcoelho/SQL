@@ -1,0 +1,10 @@
+StatusRPS:
+0 - NES + RPS Aberto
+1 - NES + RPS Cancelado
+2 - NES + RPS Substituido
+3 - NES + RPS Enviado
+4 - NES + RPS Emitido
+5 - NES + RPS Rejeitado
+6 - NES + RPS Pré-Substituido
+7 - NES + RPS Cancelado
+8 - NES + RPS Exportado

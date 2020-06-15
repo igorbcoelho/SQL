@@ -1,0 +1,16 @@
+Controller
+
+   empresas  - :TabelasVazias
+   global    - :Controller
+ 
+Contábil
+
+   empresas  - :Empresa
+   global    - :Contabil
+   ano       - :Anual
+ 
+Persona
+
+   empresa   - :TabelasVazias
+   global    - :Global
+   ano       - :Anual

@@ -1,0 +1,10 @@
+-- BUSCAR CARACTERES INVÁLIDOS
+
+select * from ns.df_linhas where descricaoitemdocfis ilike '%' || chr(10) || '%'
+update ns.df_linhas set descricaoitemdocfis = replace(descricaoitemdocfis, chr(10), '') where descricaoitemdocfis ilike '%' || chr(10) || '%';
+select * from estoque.produtos where especificacao ilike '%' || chr(10) || '%'
+select * from estoque.itens where especificacao ilike '%' || chr(10) || '%'
+select * from ns.df_itens where especificacao ilike '%' || chr(10) || '%'
+update estoque.produtos set especificacao = replace(especificacao, chr(10), '') where especificacao ilike '%' || chr(10) || '%';
+update estoque.itens set especificacao = replace(especificacao, chr(10), '') where especificacao ilike '%' || chr(10) || '%';
+update ns.df_itens set especificacao = replace(especificacao, chr(10), '') where especificacao ilike '%' || chr(10) || '%';

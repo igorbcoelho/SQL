@@ -1,0 +1,9 @@
+select * from cwmovest where item = "10-130-05" and origem = "3"
+
+select * from cwitespe, cwpedido where (cwitespe.pedido = cwpedido.pedido) and cwpedido.item = "10-130-05"
+
+
+select * 
+from cwitespe
+inner join cwpedido on (cwitespe.pedido = cwpedido.pedido)
+where cwitespe.item = "10-130-05"

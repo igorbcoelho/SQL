@@ -1,0 +1,52 @@
+Os pré-requesitos:
+A Classificação de destino já deverá existir no arquivo.
+A Classificação tem que ser estruturada como um plano de contas, exemplo:
+
+01       Empresa
+01.01    Receitas
+01.01.01 Receita de Vendas
+01.01.02 Receita de Suporte
+01.02    Despesas
+01.02.01 Despesas com Marketing
+01.02.02 Despesas com Atendimento
+
+No exemplo acima temos o arquivo cwcencus com a estrutura similar a esta:
+
+01 	 Empresa 	
+01.01 	 Receitas 	        01
+01.01.01 Receita de Vendas 	01.01
+01.01.02 Receita de Suporte 	01.01
+01.02 	 Despesas 	        01
+01.02.01 Despesas com Marketing 	01.02
+01.02.02 Despesas com Atendimento 	01.02
+
+Veja como copiar esta estrutura para o Classificação financeira do grupo 02:
+
+No utilctl, execute o SQL
+SELECT "02"+SUBSTRING ( CentroCusto FROM 3 FOR 16) CentroCusto , Descricao, "02"+SUBSTRING ( SuperCusto FROM 3 FOR 16) SuperCusto, CentroCustoGerencial, Rateio, CentroCustoContabil, CodigoContabil FROM cwcencus WHERE SuperCusto LIKE "01%"
+será exibido como resultado:
+
+02.01 	   Receitas 	02
+02.01.01   Receita de Vendas 	02.01
+02.01.02   Receita de Suporte 	02.01
+02.02 	   Despesas 	02
+02.02.01   Despesas com Marketing 	02.02
+02.02.02   Despesas com Atendimento 	02.02
+
+Salve este resultado como uma tabela paradox por exemplo IMPORTAR.DB
+Com isso temos a nova Classificação em um arquivo separado, vamos unifica-la, execute o SQL abaixo:
+
+INSERT INTO  
+  "cwcencus.db"  
+
+SELECT
+  CAST(CentroCusto AS CHAR(16)),
+  CAST(Descricao AS CHAR(30)),
+  CAST(SuperCusto AS CHAR(16)),
+  CAST(CentroCustoGerencial AS CHAR(16)),
+  CAST(Rateio AS FLOAT),
+  CAST(CentroCustoContabil AS CHAR(10)),
+  CAST(CodigoContabil AS CHAR(16))
+FROM "IMPORTAR.DB"
+
+Desta forma conseguimos copiar a estrutura de uma Classificação Financeira para uma nova.

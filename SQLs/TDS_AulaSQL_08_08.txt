@@ -1,0 +1,301 @@
+SELECT CustomerID, 
+       CompanyName, 
+       ContactName, 
+       ContactTitle, 
+       Address, 
+       City, 
+       Region, 
+       PostalCode, 
+       Country, 
+       Phone, 
+       Fax 
+FROM Customers
+order by CompanyName
+
+---------------------------------------------------------
+
+select count(*) as Total 
+from customers
+
+---------------------------------------------------------
+
+select Country,
+       count(*) as Total
+from customers
+group by Country  
+
+---------------------------------------------------------
+
+select * 
+from customers c
+inner join orders o
+on (o.customerID = c.customerID)
+
+----------------------------------------------------------------------------------------
+
+*/SELEÇÃO DO NOME DA EMPRESA + DATA DO ULTIMO PEDIDO POR EMPRESA*/
+
+select CompanyName, 
+       MAX(OrderDate) as UltimasOrdem
+from Customers c
+left join Orders o
+on (o.customerID = c.customerID) 
+group by CompanyName
+
+----------------------------------------------------------------------------------------
+
+*/SELEÇÃO DO NOME DA EMPRESA + DATA DO ULTIMO PEDIDO + QTD DE PRODUTOS DO ULTIMO PEDIDO
+POR EMPRESA*/
+
+select CompanyName, 
+       MAX(OrderDate) as UltimaOrdem,
+       SUM(Quantity) as Quantidade
+from Customers C
+inner join Orders O
+on (O.customerID = C.customerID)
+inner join [order details] D
+on (D.orderID = o.orderID)
+group by CompanyName
+
+----------------------------------------------------------------------------------------
+
+*/SELEÇÃO DO NOME DA EMPRESA + DATA DO ULTIMO PEDIDO + QTD DE PRODUTOS DE TODOS OS PEDIDOS SOMENTE DOS PEDIDOS COM QTD MAIOR QUE 100 POR EMPRESA*/
+
+select CompanyName, 
+       MAX(OrderDate) as UltimaOrdem,
+       SUM(Quantity) as Quantidade
+from Customers C
+inner join Orders O
+on (O.customerID = C.customerID)
+inner join [order details] D
+on (D.orderID = o.orderID)
+group by CompanyName
+having SUM(Quantity) > 100
+
+----------------------------------------------------------------------------------------
+
+*/SELEÇÃO DO NOME DA EMPRESA + DATA DO ULTIMO PEDIDO + QTD DE PRODUTOS SOMENTE DO ULTIMO PEDIDO, SOMENTE DOS PEDIDOS COM QTD MAIOR QUE 100 DA EMPRESA, ORDENADO POR NOME*/
+
+select C.CompanyName,
+       Orders.CustomerID,
+       Orders.OrderID,
+       Orders.Orderdate,
+       SUM(D.Quantity) as Quantidade 
+from Orders
+inner join (
+             select customerID, 
+                MAX(OrderDate) as UltimaOrdemDate
+               from Orders
+           group by customerID
+            ) UltimaOrdem
+on UltimaOrdem.CustomerID = Orders.CustomerID and 
+   UltimaOrdem.UltimaOrdemDate = Orders.OrderDate
+
+inner join [Order Details] D
+on D.OrderID = Orders.OrderID
+
+inner join Customers C
+on C.CustomerID = Orders.CustomerID
+
+group by C.CompanyName,
+         Orders.CustomerID,
+         Orders.OrderID,
+         Orders.Orderdate
+having SUM(Quantity) > 100
+order by CompanyName
+
+---------------------------------------------------------
+
+
+extrair a data do servidor
+
+select getdate()
+select datepart(day, getdate())
+select datepart(month, getdate())
+select datepart(year, getdate())
+
+---------------------------------------------------------
+
+adicionar ou subtrair nas datas
+
+select dateadd(day, +1, getdate())
+select dateadd(day, -1, getdate())
+
+---------------------------------------------------------
+
+convertendo tipos de dados
+
+select cast (datepart(year, getdate()) as varchar)
+
+----------------------------------------------------------------------------------------
+
+Definindo Valores para dados extraidos
+
+select case 
+         when DATEPART(month, getdate()) = 1
+         then 'Janeiro'
+         when DATEPART(month, getdate()) = 2
+         then 'Fevereiro'
+         when DATEPART(month, getdate()) = 8
+         then 'Agosto'
+       end as MES
+
+OBS: Também poderá ser usado o 'ELSE'
+
+----------------------------------------------------------------------------------------
+
+Evolução de Vendas por Produto de acordo com a Referência(Ano)
+
+
+SELECT ProductName,
+       CAST(SUM(CASE WHEN Referencia = 1996 THEN Total ELSE 0 END) as MONEY) as [1996],
+       CAST(SUM(CASE WHEN Referencia = 1997 THEN Total ELSE 0 END) as MONEY) as [1997],
+       CAST(SUM(CASE WHEN Referencia = 1998 THEN Total ELSE 0 END) AS MONEY) as [1998]
+
+from Products
+inner join
+	(
+	select Itens.ProductID,
+	       DATEPART(year, Orders.OrderDate) as Referencia,
+	       SUM(Itens.Quantity) as Quantidade,
+	       SUM(Itens.Valor) as Valor,
+	       SUM(Itens.Desconto) as Desconto,
+	       SUM(Itens.Total) as Total
+	from Orders
+	inner join 
+        	   (
+            	    select OrderID,
+               		   ProductID,
+                           Quantity, 
+        	           UnitPrice * Quantity as Valor,
+	                   Discount * Quantity as Desconto,
+	                   (UnitPrice * Quantity) - (Discount * Quantity) as Total
+	              from [Order Details]
+	            ) Itens
+	on Itens.OrderID = Orders.OrderID
+
+	group by Itens.ProductID,
+        	 DATEPART(year, Orders.OrderDate)
+	) Serie
+on Serie.ProductID = Products.ProductID 
+       
+GROUP BY ProductName
+
+---------------------------------------------------------
+
+Criando um Stored Procedure para o select de cima.
+
+
+CREATE PROCEDURE [DBO].[GETSerieVendasPorProduto]
+
+@Referencia [int]
+
+AS
+BEGIN
+     DECLARE @A    INT -- Ano Atual a Data de Referencia
+     DECLARE @AA   INT -- Ano Anterior a Data de Referencia
+     DECLARE @AAA  INT -- Ano Antes-Anterior a Data de Referencia
+
+     SET NOCOUNT ON;
+     
+     SET LOCK_TIMEOUT 5000
+
+     SET @A    = @Referencia
+     SET @AA   = @Referencia -1 
+     SET @AAA  = @Referencia -2
+
+
+SELECT ProductName,
+       CAST(SUM(CASE WHEN Referencia = @AAA THEN Total ELSE 0 END) as MONEY) as AAA,
+       CAST(SUM(CASE WHEN Referencia = @AA THEN Total ELSE 0 END) as MONEY) as AA,
+       CAST(SUM(CASE WHEN Referencia = @A THEN Total ELSE 0 END) AS MONEY) as A
+
+from Products
+inner join
+	(
+	select Itens.ProductID,
+	       DATEPART(year, Orders.OrderDate) as Referencia,
+	       SUM(Itens.Quantity) as Quantidade,
+	       SUM(Itens.Valor) as Valor,
+	       SUM(Itens.Desconto) as Desconto,
+	       SUM(Itens.Total) as Total
+	from Orders
+	inner join 
+        	   (
+            	    select OrderID,
+               		   ProductID,
+                           Quantity, 
+        	           UnitPrice * Quantity as Valor,
+	                   Discount * Quantity as Desconto,
+	                   (UnitPrice * Quantity) - (Discount * Quantity) as Total
+	              from [Order Details]
+	            ) Itens
+	on Itens.OrderID = Orders.OrderID
+
+	group by Itens.ProductID,
+        	 DATEPART(year, Orders.OrderDate)
+	) Serie
+on Serie.ProductID = Products.ProductID 
+       
+GROUP BY ProductName
+
+end
+go
+
+---------------------------------------------------------
+
+Função
+
+CREATE FUNCTION [dbo].[DATEREF] (@Date [datetime])  
+RETURNS [varchar] (8)
+AS  
+  BEGIN
+  DECLARE @Mes [varchar] (3)
+  DECLARE @Ano [varchar] (4)
+
+  SET @Mes = UPPER(SUBSTRING(DATENAME(MONTH, @Date), 1, 3))
+  SET @Ano = YEAR(@Date)
+
+  IF (@Mes = 'FEB') SET @Mes = 'FEV' ELSE
+  IF (@Mes = 'APR') SET @Mes = 'ABR' ELSE
+  IF (@Mes = 'MAY') SET @Mes = 'MAI' ELSE
+  IF (@Mes = 'AUG') SET @Mes = 'AGO' ELSE
+  IF (@Mes = 'SEP') SET @Mes = 'SET' ELSE
+  IF (@Mes = 'OCT') SET @Mes = 'OUT' ELSE
+  IF (@Mes = 'DEC') SET @Mes = 'DEZ'  
+
+RETURN (@Mes + '/' + @Ano)
+ 
+END
+
+
+PARA ACESSAR 
+
+select dbo.DATEREF(getdate())
+
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------
+
+---------------------------------------------------------

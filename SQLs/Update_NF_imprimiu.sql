@@ -1,0 +1,1 @@
+update cwnotfis set imprimiu = "true" where ( numero = "xxxxxx" and sinal = "0" )

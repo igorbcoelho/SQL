@@ -1,0 +1,12 @@
+SELECT * FROM cwTitulo 
+WHERE nossonumero IN (SELECT DISTINCT nossonumero from cwTitulo where conta = 'xxxx' 
+GROUP BY nossonumero
+HAVING COUNT(nossonumero) > 1)
+ORDER BY nossonumero DESC
+
+
+SELECT * FROM cwTitulo 
+WHERE numero IN (SELECT numero from cwTitulo where Origem = '' 
+GROUP BY numero
+HAVING COUNT(numero) > 1)
+ORDER BY numero DESC

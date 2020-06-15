@@ -1,0 +1,42 @@
+EXIBIR ITEM DE ESTOQUE COM CÓDIGO DE BARRAS REPETIDOS
+------------------------------------------------------
+SELECT item, especificacao, codigobarra
+FROM cwiteest
+WHERE codigobarra in (
+SELECT DISTINCT codigobarra
+FROM cwiteest 
+WHERE not (codigobarra is null) 
+GROUP BY codigobarra
+HAVING COUNT(codigobarra)  > 1)
+ORDER BY item
+
+
+
+
+EXIBIR ENDEREÇOS DE ENTREGA REPETIDOS
+------------------------------------------------------
+
+SELECT DataHora, Pessoa, Endereco
+FROM cwEndEnt
+WHERE DataHora in (
+SELECT DataHora
+FROM cwEndEnt 
+GROUP BY DataHora
+HAVING COUNT(DataHora)  > 1)
+ORDER BY Pessoa
+
+
+SELECT DataHora, Pessoa, Endereco
+FROM cwEndEnt
+WHERE DataHora in (
+SELECT DataHora
+FROM cwEndEnt 
+WHERE PESSOA = 'XXXXX'
+GROUP BY DataHora
+HAVING COUNT(DataHora)  > 1)
+ORDER BY Pessoa
+
+------------------------------------------------------
+
+
+

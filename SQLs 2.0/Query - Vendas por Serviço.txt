@@ -1,0 +1,28 @@
+SELECT DISTINCT "servicos"."codigo", 
+                "servicos"."descricao", 
+                "gruposempresariais"."nome", 
+                "empresas"."razaosocial", 
+                "empresas"."codigo" AS codigo_2, 
+                SUM("itenspedidosvendasservicos"."valorunitario") AS SUM_itenspedidosvendasser, 
+                SUM(round(((itenspedidosvendasservicos.valorunitario * itenspedidosvendasservicos.quantidade - itenspedidosvendasservicos.valorunitario * itenspedidosvendasservicos.quantidade * COALESCE(itenspedidosvendasservicos.desconto, 0::double precision) / 100::double precision) / (pedidosvendasservicos.valortotal + (COALESCE(pedidosvendasservicos.descontoservico, 0::double precision) - COALESCE(pedidosvendasservicos.acrescimofinanceiro, 0::double precision) + COALESCE(pedidosvendasservicos.descontofidelidade, 0::double precision))) * pedidosvendasservicos.valortotal)::numeric, 2) ) AS SUM_round_itenspedidosven, 
+                SUM("itenspedidosvendasservicos"."quantidade") AS SUM_itenspedidosvendass_2
+FROM 
+     "public"."pedidosvendasservicos" "pedidosvendasservicos"
+      INNER JOIN "public"."itenspedidosvendasservicos" "itenspedidosvendasservicos" ON 
+     ("itenspedidosvendasservicos"."pedidovendaservico" = "pedidosvendasservicos"."pedidovendaservico")
+      INNER JOIN "public"."servicos" "servicos" ON 
+     ("servicos"."servico" = "itenspedidosvendasservicos"."servico")
+      INNER JOIN "public"."gruposempresariais" "gruposempresariais" ON 
+     ("gruposempresariais"."grupoempresarial" = "pedidosvendasservicos"."grupoempresarial")
+      INNER JOIN "public"."empresas" "empresas" ON 
+     ("empresas"."empresa" = "pedidosvendasservicos"."empresa")
+      INNER JOIN "public"."rpss" "rpss" ON 
+     ("rpss"."pedidovendaservico" = "pedidosvendasservicos"."pedidovendaservico")
+WHERE ( "pedidosvendasservicos"."situacao" = 2 )
+       AND ( "rpss"."status" = 0 )
+GROUP BY "servicos"."codigo", 
+         "servicos"."descricao", 
+         "gruposempresariais"."nome", 
+         "empresas"."razaosocial", 
+         "empresas"."codigo"
+ORDER BY "servicos"."codigo"

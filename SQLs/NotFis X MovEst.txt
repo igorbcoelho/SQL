@@ -1,0 +1,13 @@
+VERIFICA SE CADA ITEM DE NOTA POSSUI O MOVIEMNTO DE ESTOQUE
+============================================================
+
+select numero, emissao, sinal, cfop, valor, situacao, cwitesno.item from cwnotfis 
+inner join 
+cwitesno on
+(cwnotfis.nota = cwitesno.nota)
+where cwnotfis.baixaestoque = "true" 
+and cwitesno.item is not null
+and cwnotfis.valor <> "0"
+and cwnotfis.situacao <> "3"
+and cwitesno.datahora not in (select itemdocumento from cwmovest) 
+order by emissao

@@ -1,0 +1,1604 @@
+object reportEditorRelatorio: TppReport
+  AutoStop = False
+  DataPipeline = daUniDacQueryDataView1.TITULOS
+  NoDataBehaviors = [ndBlankReport]
+  PassSetting = psTwoPass
+  PrinterSetup.BinName = 'Default'
+  PrinterSetup.DocumentName = 'Report'
+  PrinterSetup.Duplex = dpNone
+  PrinterSetup.Orientation = poLandscape
+  PrinterSetup.PaperName = 'A4'
+  PrinterSetup.PrinterName = 'Default'
+  PrinterSetup.SaveDeviceSettings = False
+  PrinterSetup.mmMarginBottom = 6000
+  PrinterSetup.mmMarginLeft = 5000
+  PrinterSetup.mmMarginRight = 5000
+  PrinterSetup.mmMarginTop = 5000
+  PrinterSetup.mmPaperHeight = 210000
+  PrinterSetup.mmPaperWidth = 297000
+  PrinterSetup.PaperSize = 9
+  SaveAsTemplate = True
+  Template.DatabaseSettings.DataPipeline = plItem
+  Template.DatabaseSettings.Name = 'teste'
+  Template.DatabaseSettings.NameField = 'nome'
+  Template.DatabaseSettings.TemplateField = 'template'
+  Template.FileName = 
+    'C:\Users\andrerodrigues\Desktop\T'#237'tulos por Vendedores(Comiss'#227'o)' +
+    '.rtm'
+  Template.Format = ftASCII
+  Units = utMillimeters
+  AllowPrintToArchive = True
+  AllowPrintToFile = True
+  ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+  DeviceType = 'Screen'
+  DefaultFileDeviceType = 'PDF'
+  EmailSettings.ReportFormat = 'PDF'
+  EmailSettings.Enabled = True
+  EmailSettings.ShowEmailDialog = True
+  LanguageID = 'Default'
+  OpenFile = False
+  OutlineSettings.CreateNode = True
+  OutlineSettings.CreatePageNodes = True
+  OutlineSettings.Enabled = False
+  OutlineSettings.Visible = False
+  ThumbnailSettings.Enabled = True
+  ThumbnailSettings.Visible = True
+  ThumbnailSettings.DeadSpace = 30
+  PDFSettings.EmbedFontOptions = []
+  PDFSettings.EncryptSettings.AllowCopy = True
+  PDFSettings.EncryptSettings.AllowInteract = True
+  PDFSettings.EncryptSettings.AllowModify = True
+  PDFSettings.EncryptSettings.AllowPrint = True
+  PDFSettings.EncryptSettings.AllowExtract = True
+  PDFSettings.EncryptSettings.AllowAssemble = True
+  PDFSettings.EncryptSettings.AllowQualityPrint = True
+  PDFSettings.EncryptSettings.Enabled = False
+  PDFSettings.EncryptSettings.KeyLength = kl40Bit
+  PDFSettings.EncryptSettings.EncryptionType = etRC4
+  PDFSettings.FontEncoding = feAnsi
+  PDFSettings.ImageCompressionLevel = 25
+  PreviewFormSettings.WindowState = wsMaximized
+  PreviewFormSettings.ZoomSetting = zsPageWidth
+  RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+  RTFSettings.DefaultFont.Color = clWindowText
+  RTFSettings.DefaultFont.Height = -13
+  RTFSettings.DefaultFont.Name = 'Arial'
+  RTFSettings.DefaultFont.Style = []
+  TextFileName = '($MyDocuments)\Report.pdf'
+  TextSearchSettings.DefaultString = '<Texto a localizar>'
+  TextSearchSettings.Enabled = True
+  XLSSettings.AppName = 'ReportBuilder'
+  XLSSettings.Author = 'ReportBuilder'
+  XLSSettings.Subject = 'Report'
+  XLSSettings.Title = 'Report'
+  XLSSettings.WorksheetName = 'Report'
+  Left = 488
+  Top = 65
+  Version = '17.02'
+  mmColumnWidth = 194000
+  DataPipelineName = 'TITULOS'
+  object ppHeaderBand1: TppHeaderBand
+    Background.Brush.Style = bsClear
+    PrintHeight = phDynamic
+    mmBottomOffset = 0
+    mmHeight = 38629
+    mmPrintPosition = 0
+    object ppShape3: TppShape
+      DesignLayer = ppDesignLayer12
+      UserName = 'Shape1'
+      Brush.Color = cl3DLight
+      ParentWidth = True
+      Pen.Style = psClear
+      mmHeight = 12200
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 287000
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLabel80: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'lblCabecalho'
+      AutoSize = False
+      Caption = 'T'#237'tulos a Receber por Vendedores - Com Comiss'#227'o'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 12
+      Font.Style = [fsBold]
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 5027
+      mmLeft = 0
+      mmTop = 14552
+      mmWidth = 287073
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLabel13: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'Label2'
+      Caption = 'Finan'#231'as SQL'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 3969
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 287073
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLabel14: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'lblPeriodo'
+      AutoSize = False
+      Caption = 'lblPeriodo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 4022
+      mmLeft = 0
+      mmTop = 21429
+      mmWidth = 286544
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object NumeroPaginaFim: TppSystemVariable
+      DesignLayer = ppDesignLayer12
+      UserName = 'ContaPagina1'
+      HyperlinkEnabled = False
+      VarType = vtPageSetDesc
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      mmHeight = 3175
+      mmLeft = 262996
+      mmTop = 8996
+      mmWidth = 24077
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppSystemVariable4: TppSystemVariable
+      DesignLayer = ppDesignLayer12
+      UserName = 'SystemVariable1'
+      VarType = vtDateTime
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      mmHeight = 3260
+      mmLeft = 0
+      mmTop = 9000
+      mmWidth = 25950
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLabel11: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'Label11'
+      Caption = 'Nasajon Sistemas'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 4022
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 28406
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLabel12: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'lblPersonalizacao'
+      AutoSize = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      mmHeight = 3969
+      mmLeft = 189971
+      mmTop = 0
+      mmWidth = 97102
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLabel15: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'lblGrupoEmpresarial'
+      AutoSize = False
+      Caption = 'lblGrupoEmpresarial'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = []
+      TextAlignment = taCentered
+      Transparent = True
+      VerticalAlignment = avCenter
+      mmHeight = 3969
+      mmLeft = 0
+      mmTop = 4497
+      mmWidth = 286819
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLine3: TppLine
+      DesignLayer = ppDesignLayer12
+      UserName = 'Line3'
+      ParentWidth = True
+      Position = lpBottom
+      Weight = 0.750000000000000000
+      mmHeight = 2379
+      mmLeft = 0
+      mmTop = 33083
+      mmWidth = 287000
+      BandType = 0
+      LayerName = BandLayer3
+    end
+    object ppLabel20: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'lblSituacoes'
+      AutoSize = False
+      Caption = 'lblSituacoes'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 10
+      Font.Style = [fsBold]
+      TextAlignment = taCentered
+      Transparent = True
+      mmHeight = 3969
+      mmLeft = 0
+      mmTop = 26724
+      mmWidth = 286544
+      BandType = 0
+      LayerName = BandLayer3
+    end
+  end
+  object ppDetailBand7: TppDetailBand
+    Background1.Brush.Color = 15790320
+    Background2.Brush.Style = bsClear
+    PrintHeight = phDynamic
+    mmBottomOffset = 0
+    mmHeight = 3969
+    mmPrintPosition = 0
+    object ppDBText6: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText6'
+      DataField = 'titulo_emissao'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      DisplayFormat = 'dd/MM/yyyy'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 127840
+      mmTop = 529
+      mmWidth = 19049
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText7: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText7'
+      DataField = 'titulo_vencimento'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      DisplayFormat = 'dd/MM/yyyy'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3525
+      mmLeft = 147946
+      mmTop = 444
+      mmWidth = 17992
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText8: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText8'
+      DataField = 'titulo_pagamento'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      DisplayFormat = 'dd/MM/yyyy'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3525
+      mmLeft = 167260
+      mmTop = 444
+      mmWidth = 16667
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText4: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText4'
+      DataField = 'titulo_numero'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 0
+      mmTop = 529
+      mmWidth = 18451
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText13: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText13'
+      DataField = 'cliente_razaosocial'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 19050
+      mmTop = 529
+      mmWidth = 62971
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText3: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText3'
+      DataField = 'titulo_valorbruto'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 185251
+      mmTop = 529
+      mmWidth = 12957
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText9: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText9'
+      DataField = 'vendedor_participacao'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 218608
+      mmTop = 529
+      mmWidth = 20907
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText12: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText12'
+      DataField = 'vendedor_comissao'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 240572
+      mmTop = 529
+      mmWidth = 17992
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText16: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText16'
+      DataField = 'estabelecimento_nome'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 83608
+      mmTop = 529
+      mmWidth = 42863
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppVariable1: TppVariable
+      DesignLayer = ppDesignLayer12
+      UserName = 'ValorComissao'
+      BlankWhenZero = False
+      CalcOrder = 0
+      DataType = dtCurrency
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      mmHeight = 3704
+      mmLeft = 259851
+      mmTop = 265
+      mmWidth = 26723
+      BandType = 4
+      LayerName = BandLayer3
+    end
+    object ppDBText5: TppDBText
+      DesignLayer = ppDesignLayer12
+      UserName = 'DBText5'
+      DataField = 'titulo_valorpago'
+      DataPipeline = daUniDacQueryDataView1.TITULOS
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = []
+      TextAlignment = taRightJustified
+      Transparent = True
+      VerticalAlignment = avBottom
+      DataPipelineName = 'TITULOS'
+      mmHeight = 3440
+      mmLeft = 200556
+      mmTop = 529
+      mmWidth = 16140
+      BandType = 4
+      LayerName = BandLayer3
+    end
+  end
+  object ppFooterBand3: TppFooterBand
+    Background.Brush.Style = bsClear
+    mmBottomOffset = 0
+    mmHeight = 0
+    mmPrintPosition = 0
+  end
+  object ppSummaryBand3: TppSummaryBand
+    Background.Brush.Style = bsClear
+    PrintHeight = phDynamic
+    mmBottomOffset = 0
+    mmHeight = 9525
+    mmPrintPosition = 0
+    object ppVariable3: TppVariable
+      DesignLayer = ppDesignLayer12
+      UserName = 'TotalComissaoGeral'
+      BlankWhenZero = False
+      CalcOrder = 0
+      DataType = dtCurrency
+      DisplayFormat = '#,0.00;-#,0.00'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      mmHeight = 3704
+      mmLeft = 256911
+      mmTop = 529
+      mmWidth = 29633
+      BandType = 7
+      LayerName = BandLayer3
+    end
+    object ppLine5: TppLine
+      DesignLayer = ppDesignLayer12
+      UserName = 'Line5'
+      ParentWidth = True
+      Weight = 0.750000000000000000
+      mmHeight = 2380
+      mmLeft = 0
+      mmTop = 0
+      mmWidth = 287000
+      BandType = 7
+      LayerName = BandLayer3
+    end
+    object ppLabel23: TppLabel
+      DesignLayer = ppDesignLayer12
+      UserName = 'Label23'
+      Caption = 'Total Geral'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Name = 'Arial'
+      Font.Size = 8
+      Font.Style = [fsBold]
+      TextAlignment = taRightJustified
+      Transparent = True
+      mmHeight = 3704
+      mmLeft = 794
+      mmTop = 529
+      mmWidth = 15610
+      BandType = 7
+      LayerName = BandLayer3
+    end
+  end
+  object ppGroup1: TppGroup
+    BreakName = 'vendedor'
+    DataPipeline = daUniDacQueryDataView1.TITULOS
+    GroupFileSettings.NewFile = False
+    GroupFileSettings.EmailFile = False
+    OutlineSettings.CreateNode = True
+    StartOnOddPage = False
+    UserName = 'Group1'
+    mmNewColumnThreshold = 0
+    mmNewPageThreshold = 0
+    DataPipelineName = 'TITULOS'
+    NewFile = False
+    object ppGroupHeaderBand1: TppGroupHeaderBand
+      Background.Brush.Style = bsClear
+      mmBottomOffset = 0
+      mmHeight = 12435
+      mmPrintPosition = 0
+      object ppLine2: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line1'
+        ParentWidth = True
+        Position = lpBottom
+        Weight = 0.750000000000000000
+        mmHeight = 1849
+        mmLeft = 0
+        mmTop = 10556
+        mmWidth = 287000
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel3: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label1'
+        AutoSize = False
+        Caption = 'T'#237'tulo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 0
+        mmTop = 8438
+        mmWidth = 18512
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel4: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label4'
+        AutoSize = False
+        Caption = 'Cliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 19025
+        mmTop = 8438
+        mmWidth = 10583
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel6: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label6'
+        AutoSize = False
+        Caption = 'Emiss'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3917
+        mmLeft = 127806
+        mmTop = 8438
+        mmWidth = 19052
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel7: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label7'
+        AutoSize = False
+        Caption = 'Vencimento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3917
+        mmLeft = 147915
+        mmTop = 8438
+        mmWidth = 17992
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppDBText10: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText10'
+        DataField = 'vendedor'
+        DataPipeline = daUniDacQueryDataView1.TITULOS
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'TITULOS'
+        mmHeight = 4235
+        mmLeft = 19837
+        mmTop = 265
+        mmWidth = 62176
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel16: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label16'
+        AutoSize = False
+        Caption = 'Vendedor:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4232
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 18247
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppDBText11: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText101'
+        DataField = 'vendedor_razaosocial'
+        DataPipeline = daUniDacQueryDataView1.TITULOS
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'TITULOS'
+        mmHeight = 4233
+        mmLeft = 95493
+        mmTop = 265
+        mmWidth = 185237
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel17: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label17'
+        AutoSize = False
+        Caption = 'Nome:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 83599
+        mmTop = 265
+        mmWidth = 11101
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel18: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label18'
+        AutoSize = False
+        Caption = 'Pagamento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 167258
+        mmTop = 8462
+        mmWidth = 16667
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel5: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label5'
+        AutoSize = False
+        Caption = 'Valor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 185250
+        mmTop = 8462
+        mmWidth = 12957
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel8: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label8'
+        AutoSize = False
+        Caption = '% Participa'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 218610
+        mmTop = 8462
+        mmWidth = 20907
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel9: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label9'
+        AutoSize = False
+        Caption = '% Comiss'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 240574
+        mmTop = 8462
+        mmWidth = 17992
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel19: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label19'
+        AutoSize = False
+        Caption = 'Estabelecimento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 83595
+        mmTop = 8462
+        mmWidth = 25665
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel10: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label10'
+        AutoSize = False
+        Caption = 'Valor Comiss'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3969
+        mmLeft = 259851
+        mmTop = 8467
+        mmWidth = 26723
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel21: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label21'
+        AutoSize = False
+        Caption = 'Valor Pago'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        VerticalAlignment = avCenter
+        mmHeight = 3970
+        mmLeft = 199496
+        mmTop = 8467
+        mmWidth = 17198
+        BandType = 3
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+    end
+    object ppGroupFooterBand1: TppGroupFooterBand
+      Background.Brush.Style = bsClear
+      HideWhenOneDetail = False
+      mmBottomOffset = 0
+      mmHeight = 7408
+      mmPrintPosition = 0
+      object ppLine4: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line4'
+        ParentWidth = True
+        Weight = 0.750000000000000000
+        mmHeight = 2909
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 287000
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppVariable2: TppVariable
+        DesignLayer = ppDesignLayer12
+        UserName = 'TotalComissaoVar'
+        BlankWhenZero = False
+        CalcOrder = 0
+        DataType = dtCurrency
+        DisplayFormat = '#,0.00;-#,0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        ResetComponent = ppGroup1
+        ResetType = veGroupStart
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 259557
+        mmTop = 794
+        mmWidth = 26987
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+      object ppLabel22: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label3'
+        Caption = 'Total do Vendedor'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 794
+        mmTop = 794
+        mmWidth = 26987
+        BandType = 5
+        GroupNo = 0
+        LayerName = BandLayer3
+      end
+    end
+  end
+  object daDataModule1: TdaDataModule
+    object daUniDacQueryDataView1: TdaUniDacQueryDataView
+      UserName = 'Query_TITULOS'
+      Height = 400
+      Left = 283
+      NameColumnWidth = 169
+      SizeColumnWidth = 35
+      SortMode = 0
+      Top = 79
+      TypeColumnWidth = 52
+      Width = 481
+      AutoSearchTabOrder = 0
+      object TITULOS: TppChildDBPipeline
+        AutoCreateFields = False
+        UserName = 'TITULOS'
+        object ppField1: TppField
+          FieldAlias = 'titulo_numero'
+          FieldName = 'titulo_numero'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 0
+        end
+        object ppField2: TppField
+          FieldAlias = 'titulo_emissao'
+          FieldName = 'titulo_emissao'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 10
+          Position = 1
+        end
+        object ppField3: TppField
+          FieldAlias = 'titulo_vencimento'
+          FieldName = 'titulo_vencimento'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 10
+          Position = 2
+        end
+        object ppField4: TppField
+          FieldAlias = 'titulo_valorbruto'
+          FieldName = 'titulo_valorbruto'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 3
+        end
+        object ppField5: TppField
+          FieldAlias = 'titulo_observacao'
+          FieldName = 'titulo_observacao'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 4
+        end
+        object ppField6: TppField
+          FieldAlias = 'cliente'
+          FieldName = 'cliente'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 5
+        end
+        object ppField7: TppField
+          FieldAlias = 'cliente_razaosocial'
+          FieldName = 'cliente_razaosocial'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 6
+        end
+        object ppField8: TppField
+          FieldAlias = 'cliente_nomefantasia'
+          FieldName = 'cliente_nomefantasia'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 7
+        end
+        object ppField9: TppField
+          FieldAlias = 'estabelecimento'
+          FieldName = 'estabelecimento'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 8
+        end
+        object ppField10: TppField
+          FieldAlias = 'estabelecimento_nome'
+          FieldName = 'estabelecimento_nome'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 9
+        end
+        object ppField11: TppField
+          FieldAlias = 'titulo_pagamento'
+          FieldName = 'titulo_pagamento'
+          FieldLength = 0
+          DataType = dtDate
+          DisplayWidth = 10
+          Position = 10
+        end
+        object ppField12: TppField
+          FieldAlias = 'vendedor'
+          FieldName = 'vendedor'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 11
+        end
+        object ppField13: TppField
+          FieldAlias = 'vendedor_razaosocial'
+          FieldName = 'vendedor_razaosocial'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 12
+        end
+        object ppField14: TppField
+          FieldAlias = 'vendedor_nomefantasia'
+          FieldName = 'vendedor_nomefantasia'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 13
+        end
+        object ppField15: TppField
+          FieldAlias = 'vendedor_participacao'
+          FieldName = 'vendedor_participacao'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 14
+        end
+        object ppField16: TppField
+          FieldAlias = 'vendedor_comissao'
+          FieldName = 'vendedor_comissao'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 15
+        end
+        object ppField17: TppField
+          FieldAlias = 'conta'
+          FieldName = 'conta'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 16
+        end
+        object ppField18: TppField
+          FieldAlias = 'conta_nome'
+          FieldName = 'conta_nome'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 17
+        end
+        object ppField19: TppField
+          FieldAlias = 'titulo_situacao'
+          FieldName = 'titulo_situacao'
+          FieldLength = 0
+          DataType = dtInteger
+          DisplayWidth = 10
+          Position = 18
+        end
+        object ppField20: TppField
+          FieldAlias = 'titulo_situacaotexto'
+          FieldName = 'titulo_situacaotexto'
+          FieldLength = 0
+          Linkable = False
+          DataType = dtMemo
+          DisplayWidth = 10
+          Position = 19
+        end
+        object ppField21: TppField
+          FieldAlias = 'estabelecimento_id'
+          FieldName = 'estabelecimento_id'
+          FieldLength = 38
+          DataType = dtGUID
+          DisplayWidth = 38
+          Position = 20
+        end
+        object ppField22: TppField
+          FieldAlias = 'conta_id'
+          FieldName = 'conta_id'
+          FieldLength = 38
+          DataType = dtGUID
+          DisplayWidth = 38
+          Position = 21
+        end
+        object ppField23: TppField
+          FieldAlias = 'titulo_valorpago'
+          FieldName = 'titulo_valorpago'
+          FieldLength = 0
+          DataType = dtDouble
+          DisplayWidth = 10
+          Position = 22
+        end
+      end
+      object daSQL1: TdaSQL
+        DatabaseName = 'MyCnx'
+        DatabaseType = dtPostgreSQL
+        DataPipelineName = 'TITULOS'
+        EditSQLAsText = True
+        IsCaseSensitive = True
+        LinkColor = clMaroon
+        LinkType = ltParameterizedSQL
+        MaxSQLFieldAliasLength = 0
+        SQLText.Strings = (
+          'SELECT *'
+          
+            'FROM FINANCAS.RELATORIO_TITULOSPORVENDEDORES(:TipoDeSelecao, :In' +
+            'icioPeriodo, :FimPeriodo)'
+          'WHERE ( TITULO_SITUACAO IN :Situacoes )'
+          '  AND ( ESTABELECIMENTO_ID IN :Estabelecimentos )    '
+          '  AND ( VENDEDOR IN :Vendedores )    '
+          '  AND ( CONTA_ID IN :Contas )'
+          'ORDER BY VENDEDOR;    ')
+        SQLType = sqSQL2
+        object daField1: TdaField
+          Alias = 'titulo_numero'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'titulo_numero'
+          FieldLength = 0
+          FieldName = 'titulo_numero'
+          Linkable = False
+          SQLFieldName = 'titulo_numero'
+        end
+        object daField2: TdaField
+          Alias = 'titulo_emissao'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'titulo_emissao'
+          FieldLength = 0
+          FieldName = 'titulo_emissao'
+          SQLFieldName = 'titulo_emissao'
+        end
+        object daField3: TdaField
+          Alias = 'titulo_vencimento'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'titulo_vencimento'
+          FieldLength = 0
+          FieldName = 'titulo_vencimento'
+          SQLFieldName = 'titulo_vencimento'
+        end
+        object daField4: TdaField
+          Alias = 'titulo_valorbruto'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'titulo_valorbruto'
+          FieldLength = 0
+          FieldName = 'titulo_valorbruto'
+          SQLFieldName = 'titulo_valorbruto'
+        end
+        object daField5: TdaField
+          Alias = 'titulo_observacao'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'titulo_observacao'
+          FieldLength = 0
+          FieldName = 'titulo_observacao'
+          Linkable = False
+          SQLFieldName = 'titulo_observacao'
+        end
+        object daField6: TdaField
+          Alias = 'cliente'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'cliente'
+          FieldLength = 0
+          FieldName = 'cliente'
+          Linkable = False
+          SQLFieldName = 'cliente'
+        end
+        object daField7: TdaField
+          Alias = 'cliente_razaosocial'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'cliente_razaosocial'
+          FieldLength = 0
+          FieldName = 'cliente_razaosocial'
+          Linkable = False
+          SQLFieldName = 'cliente_razaosocial'
+        end
+        object daField8: TdaField
+          Alias = 'cliente_nomefantasia'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'cliente_nomefantasia'
+          FieldLength = 0
+          FieldName = 'cliente_nomefantasia'
+          Linkable = False
+          SQLFieldName = 'cliente_nomefantasia'
+        end
+        object daField9: TdaField
+          Alias = 'estabelecimento'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'estabelecimento'
+          FieldLength = 0
+          FieldName = 'estabelecimento'
+          Linkable = False
+          SQLFieldName = 'estabelecimento'
+        end
+        object daField10: TdaField
+          Alias = 'estabelecimento_nome'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'estabelecimento_nome'
+          FieldLength = 0
+          FieldName = 'estabelecimento_nome'
+          Linkable = False
+          SQLFieldName = 'estabelecimento_nome'
+        end
+        object daField11: TdaField
+          Alias = 'titulo_pagamento'
+          DataType = dtDate
+          DisplayWidth = 10
+          FieldAlias = 'titulo_pagamento'
+          FieldLength = 0
+          FieldName = 'titulo_pagamento'
+          SQLFieldName = 'titulo_pagamento'
+        end
+        object daField12: TdaField
+          Alias = 'vendedor'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'vendedor'
+          FieldLength = 0
+          FieldName = 'vendedor'
+          Linkable = False
+          SQLFieldName = 'vendedor'
+        end
+        object daField13: TdaField
+          Alias = 'vendedor_razaosocial'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'vendedor_razaosocial'
+          FieldLength = 0
+          FieldName = 'vendedor_razaosocial'
+          Linkable = False
+          SQLFieldName = 'vendedor_razaosocial'
+        end
+        object daField14: TdaField
+          Alias = 'vendedor_nomefantasia'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'vendedor_nomefantasia'
+          FieldLength = 0
+          FieldName = 'vendedor_nomefantasia'
+          Linkable = False
+          SQLFieldName = 'vendedor_nomefantasia'
+        end
+        object daField15: TdaField
+          Alias = 'vendedor_participacao'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'vendedor_participacao'
+          FieldLength = 0
+          FieldName = 'vendedor_participacao'
+          SQLFieldName = 'vendedor_participacao'
+        end
+        object daField16: TdaField
+          Alias = 'vendedor_comissao'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'vendedor_comissao'
+          FieldLength = 0
+          FieldName = 'vendedor_comissao'
+          SQLFieldName = 'vendedor_comissao'
+        end
+        object daField17: TdaField
+          Alias = 'conta'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'conta'
+          FieldLength = 0
+          FieldName = 'conta'
+          Linkable = False
+          SQLFieldName = 'conta'
+        end
+        object daField18: TdaField
+          Alias = 'conta_nome'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'conta_nome'
+          FieldLength = 0
+          FieldName = 'conta_nome'
+          Linkable = False
+          SQLFieldName = 'conta_nome'
+        end
+        object daField19: TdaField
+          Alias = 'titulo_situacao'
+          DataType = dtInteger
+          DisplayWidth = 10
+          FieldAlias = 'titulo_situacao'
+          FieldLength = 0
+          FieldName = 'titulo_situacao'
+          SQLFieldName = 'titulo_situacao'
+        end
+        object daField20: TdaField
+          Alias = 'titulo_situacaotexto'
+          DataType = dtMemo
+          DisplayWidth = 10
+          FieldAlias = 'titulo_situacaotexto'
+          FieldLength = 0
+          FieldName = 'titulo_situacaotexto'
+          Linkable = False
+          SQLFieldName = 'titulo_situacaotexto'
+        end
+        object daField21: TdaField
+          Alias = 'estabelecimento_id'
+          DataType = dtGUID
+          DisplayWidth = 38
+          FieldAlias = 'estabelecimento_id'
+          FieldLength = 38
+          FieldName = 'estabelecimento_id'
+          SQLFieldName = 'estabelecimento_id'
+        end
+        object daField22: TdaField
+          Alias = 'conta_id'
+          DataType = dtGUID
+          DisplayWidth = 38
+          FieldAlias = 'conta_id'
+          FieldLength = 38
+          FieldName = 'conta_id'
+          SQLFieldName = 'conta_id'
+        end
+        object daField23: TdaField
+          Alias = 'titulo_valorpago'
+          DataType = dtDouble
+          DisplayWidth = 10
+          FieldAlias = 'titulo_valorpago'
+          FieldLength = 0
+          FieldName = 'titulo_valorpago'
+          SQLFieldName = 'titulo_valorpago'
+        end
+      end
+    end
+  end
+  object raCodeModule3: TraCodeModule
+    object raProgramInfo4: TraProgramInfo
+      raClassName = 'TraVarProgram'
+      raProgram.ChildType = 17
+      raProgram.ProgramName = 'Variables'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure Variables;'#13#10'var'#13#10'  LeftNomeIdentado: Integer;'#13#10'  statu' +
+        'sZebra: Boolean;'#13#10'  totalcomissao: Currency;'#13#10#13#10'begin'#13#10#13#10'end;'#13#10
+      raProgram.CaretPos = (
+        27
+        4)
+    end
+    object raProgramInfo5: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'ReportBeforePrint'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure ReportBeforePrint;'#13#10'begin'#13#10'  case TipoDeSelecao.Value ' +
+        'of'#13#10'    0: lblPeriodo.Caption := '#39'Emiss'#227'o: de '#39' + InicioPeriodo.' +
+        'Value + '#39' a '#39' + FimPeriodo.Value;'#13#10'    1: lblPeriodo.Caption := ' +
+        #39'Vencimento: de '#39' + InicioPeriodo.Value + '#39' a '#39' + FimPeriodo.Val' +
+        'ue;'#13#10'    2: lblPeriodo.Caption := '#39'Pagamento: de '#39' + InicioPerio' +
+        'do.Value + '#39' a '#39' + FimPeriodo.Value;'#13#10'  end;  '#13#10'  '#13#10'  lblSituaco' +
+        'es.Caption := '#39'Situa'#231#245'es: '#39' + SituacoesTexto.Value;    '#13#10'  lblPe' +
+        'rsonalizacao.Caption := Personalizacao.Value;  '#13#10'  lblGrupoEmpre' +
+        'sarial.Caption := GrupoEmpresarialNome.Value;'#13#10'  '#13#10'  TotalComiss' +
+        'aoVar.Value := 0; '#13#10'  TotalComissaoGeral.Value := 0;'#13#10#13#10'end;'#13#10
+      raProgram.ComponentName = 'Report'
+      raProgram.EventName = 'BeforePrint'
+      raProgram.EventID = 1
+      raProgram.CaretPos = (
+        33
+        14)
+    end
+    object raProgramInfo6: TraProgramInfo
+      raClassName = 'TraEventHandler'
+      raProgram.ProgramName = 'ValorComissaoOnPrint'
+      raProgram.ProgramType = ttProcedure
+      raProgram.Source = 
+        'procedure ValorComissaoOnPrint;'#13#10'begin'#13#10'  IF TITULOS['#39'titulo_sit' +
+        'uacao'#39'] = 1 then'#13#10'    begin'#13#10'      ValorComissao.value:= ((TITUL' +
+        'OS['#39'titulo_valorpago'#39'] * ((TITULOS['#39'vendedor_participacao'#39']+1 )-' +
+        '1)/100) * ((TITULOS['#39'vendedor_comissao'#39']+1)-1)/100);'#13#10'      Tota' +
+        'lComissaoVar.Value := TotalComissaoVar.Value + ValorComissao.val' +
+        'ue; '#13#10'      TotalComissaoGeral.Value := TotalComissaoGeral.Value' +
+        ' + ValorComissao.value;'#13#10'    end;'#13#10'end;'#13#10
+      raProgram.ComponentName = 'ValorComissao'
+      raProgram.EventName = 'OnPrint'
+      raProgram.EventID = 32
+      raProgram.CaretPos = (
+        81
+        7)
+    end
+  end
+  object ppDesignLayers12: TppDesignLayers
+    object ppDesignLayer12: TppDesignLayer
+      UserName = 'BandLayer3'
+      LayerType = ltBanded
+      Index = 0
+    end
+  end
+  object ppParameterList3: TppParameterList
+    object ppParameter1: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchExpression = '0'
+      DataType = dtInteger
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = 0
+      UserName = 'TipoDeSelecao'
+    end
+    object ppParameter2: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchExpression = '0,1,2'
+      AutoSearchSettings.SearchOperator = soInList
+      DataType = dtString
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = '0'
+      UserName = 'Situacoes'
+    end
+    object ppParameter4: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchExpression = '42418'
+      DataType = dtDate
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = 42418d
+      UserName = 'InicioPeriodo'
+    end
+    object ppParameter5: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchExpression = '42418'
+      DataType = dtDate
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = 42418d
+      UserName = 'FimPeriodo'
+    end
+    object ppParameter6: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchExpression = '{c1b9bc2e-5081-4609-a8f7-ad53c6c33d99}'
+      AutoSearchSettings.SearchOperator = soInList
+      DataType = dtString
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = '{c1b9bc2e-5081-4609-a8f7-ad53c6c33d99}'
+      UserName = 'Estabelecimentos'
+    end
+    object ppParameter7: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchExpression = '{c1b9bc2e-5081-4609-a8f7-ad53c6c33d99}'
+      AutoSearchSettings.SearchOperator = soInList
+      DataType = dtString
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = '{c1b9bc2e-5081-4609-a8f7-ad53c6c33d99}'
+      UserName = 'Vendedores'
+    end
+    object ppParameter8: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      AutoSearchSettings.SearchExpression = '{c1b9bc2e-5081-4609-a8f7-ad53c6c33d99}'
+      AutoSearchSettings.SearchOperator = soInList
+      DataType = dtString
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = '{c1b9bc2e-5081-4609-a8f7-ad53c6c33d99}'
+      UserName = 'Contas'
+    end
+    object ppParameter11: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      DataType = dtString
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = ''
+      UserName = 'Personalizacao'
+    end
+    object ppParameter3: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      DataType = dtString
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = ''
+      UserName = 'GrupoEmpresarialNome'
+    end
+    object ppParameter9: TppParameter
+      AutoSearchSettings.LogicalPrefix = []
+      AutoSearchSettings.Mandatory = True
+      DataType = dtString
+      LookupSettings.DisplayType = dtNameOnly
+      LookupSettings.SortOrder = soName
+      Value = ''
+      UserName = 'SituacoesTexto'
+    end
+  end
+end

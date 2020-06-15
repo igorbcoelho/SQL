@@ -1,0 +1,37 @@
+--NOVO -- TESTADO NA 2.37 E 2.41
+
+INSERT INTO FINANCAS.CONTASPERFISUSUARIO
+(CONTA, PERFILUSUARIO, PERMITIDO)
+SELECT C.CONTA, P.PERFILUSUARIO, 1 PERMITIDO FROM NS.PERFISUSUARIO P, FINANCAS.CONTAS C
+WHERE P.NOME <> 'MESTRE';
+
+
+====================================================================================
+
+insert into financas.contasperfisusuario
+
+( conta, perfilusuario, permitido )
+
+Select c.conta, p.perfilusuario, 1 permitido from ns.perfisusuario p, financas.contas c
+where not exists 
+		( 
+		  select c.conta, p.perfilusuario from financas.contasperfisusuario pc, financas.contas c, ns.perfisusuario p
+		  where pc.conta = c.conta and pc.perfilusuario = p.perfilusuario
+		 );
+		 
+		 
+==================================================================================		 
+
+
+
+
+insert into financas.contasperfisusuario
+
+( conta, perfilusuario, permitido )
+
+Select c.conta, p.perfilusuario, 1 permitido from ns.perfisusuario p, financas.contas c
+where not exists 
+		( 
+		  select c.conta, p.perfilusuario from financas.contasperfisusuario pc
+		  where pc.conta = c.conta and pc.perfilusuario = p.perfilusuario
+		 );

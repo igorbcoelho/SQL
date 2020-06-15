@@ -1,0 +1,5 @@
+select sDescricao, nPreco,
+Case when nPreco <= 3
+then nPreco * 1.40 
+else nPreco * 1 
+end as NovoPreco from Produto

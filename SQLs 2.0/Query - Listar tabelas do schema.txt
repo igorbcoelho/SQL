@@ -1,0 +1,6 @@
+-- listar tabelas do banco / schema
+
+SELECT table_name, table_schema, table_catalog
+FROM information_schema.tables
+WHERE table_schema IN ('crm', 'ns', 'nsview', 'financas', 'compras')
+order by table_schema;

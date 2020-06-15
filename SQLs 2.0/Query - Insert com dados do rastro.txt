@@ -1,0 +1,17 @@
+-- Para execução dessa query você tem que trocar o guid da linha do rastro e o nome da tabela e pronto, 
+-- eu retirei o copy to stdout para ficar melhor a visualização aqui por email:
+
+select replace(replace(replace('INSERT INTO ' || table_schema || '.' || table_name || '(' ||
+replace(replace((ARRAY_AGG(column_name::varchar))::varchar,'{',''),'}','')
+|| ') SELECT ' ||  
+replace(
+replace(
+replace(
+replace(
+(ARRAY_AGG('nullif(replace(replace((oldvalue->''' || column_name::varchar || '''' || ')::text,''|'',''''),''null'',''''),'''')' || '::' || data_type))::varchar,'{',''),'}','')
+|| ' from ns.rastros where rastro = ''7b24ac42-7f35-425a-b0e5-75ba4c96a19e''','"replace','replace')
+,'",',',')
+,'|','"')
+,'"nullif','nullif')
+,'" from',' from')
+ from information_schema.columns where table_name = 'negociospropostas' group by table_schema, table_name

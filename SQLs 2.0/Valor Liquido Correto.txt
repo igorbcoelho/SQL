@@ -1,0 +1,130 @@
+-- View: nsview.vw_faturamento_nfse
+
+-- DROP VIEW nsview.vw_faturamento_nfse;
+
+CREATE OR REPLACE VIEW nsview.vw_faturamento_nfse AS 
+ SELECT nfse.id AS "Identificador NFS-e", 
+    nfse.documentorateado AS "Identificador Documento Rateado", 
+    date_part('month'::text, nfse.emissao) AS "Número do Mês", 
+        CASE date_part('month'::text, nfse.emissao)
+            WHEN 1 THEN 'Janeiro'::text
+            WHEN 2 THEN 'Fevereiro'::text
+            WHEN 3 THEN 'Março'::text
+            WHEN 4 THEN 'Abril'::text
+            WHEN 5 THEN 'Maio'::text
+            WHEN 6 THEN 'Junho'::text
+            WHEN 7 THEN 'Julho'::text
+            WHEN 8 THEN 'Agosto'::text
+            WHEN 9 THEN 'Setembro'::text
+            WHEN 10 THEN 'Outubro'::text
+            WHEN 11 THEN 'Novembro'::text
+            WHEN 12 THEN 'Dezembro'::text
+            ELSE NULL::text
+        END AS "Nome do Mês", 
+    est.codigo AS "Estabelecimento", 
+    est.nomefantasia AS "Nome do Estabelecimento", 
+        CASE nfse.origem
+            WHEN 0 THEN 'Manual'::text
+            WHEN 1 THEN 'Ordem de Serviço'::text
+            WHEN 2 THEN 'Contrato'::text
+            ELSE NULL::text
+        END AS "Origem do RPS", 
+    nfse.rps AS "Número RPS", 
+    nfse.numero AS "Número NFS-e", 
+    nfse.emissao AS "Data de Emissão", 
+    nfse.lancamento AS "Data de Emissão RPS", 
+    cli.pessoa AS "Cliente", 
+    cli.nome AS "Nome do Cliente", 
+    cli.cnpj AS "Documento do Cliente", 
+    mun.uf AS "UF Município Cliente", 
+    mun.nome AS "Nome Município Cliente", 
+    replace(nfse.discriminacaoservicos, '|'::text, chr(13) || chr(10)) AS "Discriminação dos Serviços", 
+    nfse.valor AS "Valor NFS-e", 
+    nfse.cfopservico AS "Código do CFOP", 
+    codmun.descricao AS "Descrição do CFOP", 
+    nfse.deducaoiss AS "Deduções ISS", 
+    COALESCE(nfse.baseiss, 0::numeric) AS "Base ISS", 
+    COALESCE(nfse.iss, 0::numeric) AS "Perc. Alíquota ISS", 
+    COALESCE(nfse.valoriss, 0::numeric) AS "Valor ISS", 
+    COALESCE(nfse.valorir, 0::numeric) AS "Valor IRRF", 
+    COALESCE(nfse.valorinss, 0::numeric) AS "Valor INSS", 
+    COALESCE(nfse.valorpis, 0::numeric) AS "Valor PIS", 
+    COALESCE(nfse.valorcofins, 0::numeric) AS "Valor COFINS", 
+    COALESCE(nfse.valorcsll, 0::numeric) AS "Valor CSLL", 
+        CASE
+            WHEN COALESCE(nfse.valoriss, 0::numeric) > 0::numeric OR COALESCE(nfse.valorir, 0::numeric) > 0::numeric OR COALESCE(nfse.valorinss, 0::numeric) > 0::numeric OR COALESCE(nfse.valorpis, 0::numeric) > 0::numeric OR COALESCE(nfse.valorcofins, 0::numeric) > 0::numeric OR COALESCE(nfse.valorcsll, 0::numeric) > 0::numeric THEN 1
+            ELSE 0
+        END AS "Possui Retenções", 
+    cli.inscricaomunicipal AS "Inscrição Municipal", 
+
+	CASE 
+	    WHEN nfse.tipo_retencao_iss = 0 THEN
+		nfse.valor - (COALESCE(nfse.valoriss, 0::numeric) + COALESCE(nfse.valorir, 0::numeric) + COALESCE(nfse.valorinss, 0::numeric) + COALESCE(nfse.valorpis, 0::numeric) + COALESCE(nfse.valorcofins, 0::numeric) + COALESCE(nfse.valorcsll, 0::numeric)) 
+	    ELSE 
+	        nfse.valor - (COALESCE(nfse.valorir, 0::numeric) + COALESCE(nfse.valorinss, 0::numeric) + COALESCE(nfse.valorpis, 0::numeric) + COALESCE(nfse.valorcofins, 0::numeric) + COALESCE(nfse.valorcsll, 0::numeric)) 
+	END AS "Valor Líquido", 
+        CASE
+            WHEN nfse.tipo_retencao_iss = 0 THEN 'Sim'::text
+            ELSE 'Nao'::text
+        END AS "ISS Retido", 
+        CASE nfse.statusrps
+            WHEN 1 THEN 'Aberto'::text
+            WHEN 2 THEN 'Cancelado'::text
+            WHEN 3 THEN 'Substituído'::text
+            WHEN 4 THEN 'Enviado'::text
+            WHEN 5 THEN 'Emitido'::text
+            WHEN 6 THEN 'Rejeitado'::text
+            WHEN 7 THEN 'Pré-Substituído'::text
+            WHEN 8 THEN 'Exportado'::text
+            ELSE NULL::text
+        END AS "Situação", 
+        CASE nfse.tipo
+            WHEN 5 THEN 'NFS-e'::text
+            WHEN 153 THEN 'RPS'::text
+            ELSE NULL::text
+        END AS "Tipo Documento", 
+    COALESCE(nfsesubs.numero, '-'::text::character varying) AS "Número NFS-e Substituída", 
+        CASE cli.qualificacao
+            WHEN 0 THEN 'Pessoa Jurídica em Geral'::text
+            WHEN 1 THEN 'Órgão, autarquia ou fundação da administração pública federal'::text
+            WHEN 2 THEN 'Órgão, autarquia ou fundação da administração pública estadual'::text
+            WHEN 3 THEN 'Órgão, autarquia ou fundação da administração pública municipal'::text
+            WHEN 4 THEN 'Cooperativa de Crédito'::text
+            WHEN 5 THEN 'Sociedade Cooperativa Agropecuária'::text
+            WHEN 6 THEN 'Sociedade Cooperativa'::text
+            WHEN 7 THEN 'Financeira'::text
+            WHEN 8 THEN 'Soc. Seguradora, de Capitalização'::text
+            WHEN 9 THEN 'Corretora Autonoma de Seguro'::text
+            WHEN 10 THEN 'Entidade Aberta de Prev.Complementar'::text
+            WHEN 11 THEN 'Entidade Fechada de Prev. Complementar'::text
+            WHEN 12 THEN 'Sociedade de Economia Mista'::text
+            WHEN 13 THEN 'Outras Entidades da Administração Pública Federal'::text
+            WHEN 90 THEN 'Pessoa Fisica em Geral'::text
+            WHEN 99 THEN 'Utilizado no Financas/Servicos'::text
+            ELSE '< Não Informado >'::text
+        END AS "Qualificação", 
+    p.nomefantasia AS "Vendedor Principal", 
+    clapes.descricao AS "Tipo de Cliente"
+   FROM ns.df_docfis nfse
+   JOIN ns.estabelecimentos est ON est.estabelecimento = nfse.id_estabelecimento
+   JOIN ns.pessoas cli ON cli.id = nfse.id_pessoa
+   LEFT JOIN ns.enderecos endcli ON endcli.id_pessoa = cli.id AND endcli.tipoendereco = 0
+   LEFT JOIN ns.municipios mun ON mun.ibge::text = endcli.ibge::text
+   LEFT JOIN ns.cfop codmun ON codmun.id = nfse.id_cfop
+   LEFT JOIN ns.df_docfis nfsesubs ON nfsesubs.id = nfse.rps_original
+   LEFT JOIN crm.negociospropostascondicoespagamentos cp ON nfse.id_documento_vinculado = cp.propostacondicaopagamento
+   LEFT JOIN crm.negociospropostas c ON c.propostaopcao = cp.id_documento
+   LEFT JOIN crm.negociospropostasvendedores cv ON cv.documento = c.documento AND cv.principal = true
+   LEFT JOIN ns.pessoas p ON cv.id_vendedor = p.id
+   LEFT JOIN ns.clapes clapes ON clapes.id = cli.idclasspessoacliente
+  WHERE NOT COALESCE(nfse.cancelado, false) AND 
+CASE
+    WHEN nfse.modelo::text = 'NES'::text THEN nfse.sinal = 0 AND nfse.tipo = 5 AND nfse.situacao = 2 AND (nfse.statusrps = ANY (ARRAY[4, 6]))
+    WHEN nfse.modelo::text = 'RPS'::text THEN nfse.sinal = 0 AND nfse.tipo = 153 AND (nfse.statusrps = ANY (ARRAY[0, 3, 5, 8]))
+    ELSE false
+END AND nfse.sinal = 0
+  ORDER BY nfse.emissao, nfse.numero;
+
+ALTER TABLE nsview.vw_faturamento_nfse
+  OWNER TO group_nasajon;
+GRANT ALL ON TABLE nsview.vw_faturamento_nfse TO group_nasajon;

@@ -1,0 +1,15 @@
+-- Criação da tabela temporária
+select * INTO erp.tr_10082015 from erp.titulosreceber 
+where emissao = '10/08/2015' 
+and tipoorigem = 3 
+and estabelecimento = 2 
+and tituloreceber between 1186329 and 1189712
+order by tituloreceber
+
+
+-- Querys para deleção dos registros
+delete from erp.rateiosfinanceiros where documentorateado IN (select documentorateado from erp.tr_10082015);
+delete from erp.documentosrateados where documentorateado IN (select documentorateado from erp.tr_10082015);
+delete from erp.itenscobrancasprocessadas where tituloreceber IN (select tituloreceber from erp.tr_10082015);
+delete from erp.rpss where rps IN (select rps from erp.tr_10082015 where rps is not null);
+delete from erp.titulosreceber where tituloreceber IN (select tituloreceber from erp.tr_10082015);

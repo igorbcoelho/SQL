@@ -1,0 +1,5 @@
+// Exibe as conexões ativas
+select *  from pg_stat_activity
+
+// Exibe as conexões ativas por base de dados
+select datname, count(*)  from pg_stat_activity GROUP BY datname

@@ -1,0 +1,18 @@
+select numero, emissao, CFOP, BaixaEstoque
+from
+cwnotfis 
+inner join
+cwitesno on
+(cwnotfis.nota = cwitesno.nota)
+where cwitesno.item = "10/25*"
+
+
+==============================================
+
+select item, descricao, quantidade
+from 
+cwitesno
+inner join
+cwnotfis on
+(cwitesno.nota = cwnotfis.nota)
+where cwitesno.item = "10/25*"

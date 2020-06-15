@@ -1,0 +1,25 @@
+======================
+   Curso PostgreSql 
+======================
+
+
+Aula 01 - 21/03
+===============
+
+Conceitou e difiniu banco de dados e SGDB (DDL e DML).
+
+Explicou DER e MER, com os conceitos de cardinalidade e individualidade (PF e FK).
+
+Falou sobre Providers (BDE, ADO, ADO.NET, ODBC, etc...).
+
+Explicação sobre transações: Begin, Commit e Rollback.
+
+
+Aula 02 - 23/03
+===============
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+-- CANCELAR NFSE / RPS
+UPDATE ns.df_docfis
+  SET statusrps = 7, -- NES Cancelada // 1 para RPS Cancelado // 2 para substituído (NES)
+      cancelado = TRUE,
+      situacao = 15 -- cacelada e não substituida // 14 para cancelada e substituída
+  WHERE ID = informar o id da df_docfis;
+
+-- COMPLEMENTO DO CANCELAMENTO DO LANÇAMENTO FISCAL  (NFSE)
+  UPDATE scritta.lf_lanfis
+  SET cancelado = TRUE
+  WHERE id_docfis = informar o id da df_docfis;

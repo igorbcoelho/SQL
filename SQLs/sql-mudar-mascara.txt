@@ -1,0 +1,2 @@
+update tabela set codigo = '0000'+codigo 
+where codigo like "____"

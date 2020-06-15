@@ -1,0 +1,7 @@
+﻿update contas set reduzido = 'X' + substring(reduzido from 2 for 6)
+
+No Paradox deve ser informada a posição inicial de leitura e depois a quantidade de posições que será lida.
+No SQL acima trocamos o primeiro caracter pelo X 
+
+
+update cwcencus set centrocusto = substring(centrocusto from 1 for 4)  + '0' + substring(centrocusto from 5 for 5) where centrocusto like '_____'

@@ -1,0 +1,1 @@
+update erp.participantes set prorataantecipada = 1 where pagamentounificado = 1

@@ -1,0 +1,37 @@
+
+-- FUNCTION PARA AGRUPAR AS TABELAS DE RASTROS
+
+CREATE OR REPLACE FUNCTION public.resultadorastro (campos text, condicao text)
+RETURNS VOID AS
+$BODY$
+DECLARE
+tabelas RECORD;
+BEGIN
+
+DROP TABLE IF EXISTS lograstros;
+
+EXECUTE 'CREATE TEMP TABLE lograstros AS SELECT ' || campos || ' FROM ns.rastros WHERE 1 = 2';
+
+FOR tabelas IN (SELECT tablename FROM pg_tables WHERE schemaname = 'log') LOOP
+
+EXECUTE ' INSERT INTO lograstros SELECT ' || campos || ' FROM log.' || tabelas.tablename || ' WHERE ' || condicao;
+
+END LOOP;
+
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE
+COST 100;
+
+
+-- DROP FUNCTION public.resultadorastro (text,text);
+
+-- FINANÇAS SQL - BUSCAR TÍTULOS USANDO A FUNCTION RESULTADORASTRO (POR NOSSO NUMERO)
+-- PASSO 1:
+SELECT public.resultadorastro 
+('data, usuario, operacao, oldvalue->>''id_pessoa'' AS Cliente_Old, oldvalue, newvalue', 
+'tabela = ''titulos'' AND oldvalue->>''nossonumero'' IN (''01258330'', ''01258372'', ''01258460'', ''01258662'')');
+-- PASSO 2:
+SELECT DISTINCT l.oldvalue->>'nossonumero' AS NossoNumero,  (p.pessoa || ' - ' || p.nome) AS Cliente
+FROM lograstros l
+INNER JOIN ns.pessoas p ON p.id = (l.cliente_old)::uuid;

@@ -1,0 +1,171 @@
+﻿/* Script ajustar situação gerencial dos pedidos */  
+DO 
+$$
+DECLARE 
+	VAR_OPERACAO UUID; 
+	VAR_DATA_INICIO DATE; 
+BEGIN
+	-- Verificar pedidos de setembro para frente 
+	-- Operação: '13619bbc-b2b4-4309-a24e-56ef4b4bb697'
+	VAR_OPERACAO := '13619bbc-b2b4-4309-a24e-56ef4b4bb697'; 
+	VAR_DATA_INICIO := '2017-09-01'; 
+	-- Criar tabela temporária com a visão dos pedidos independente de situação 
+	DROP TABLE IF EXISTS _ANALISE_PEDIDOS; 
+	
+	CREATE TABLE _ANALISE_PEDIDOS AS ( 
+
+		SELECT 
+			d.id AS pedido_id, 
+			d.numero AS pedido_numero, 
+			d.situacaogerencial AS pedido_situacao_gerencial, 
+			dl.df_linha AS pedido_df_linha, 
+			dl.situacaogerencial AS pedido_df_linha_situacao_gerencial, 
+			i.item AS pedido_item, 
+			dl.quantidadecomercial AS pedido_quantidade, 
+			coalesce((select sum(a.quantidade) from compras.associacoesitensnotas a inner join ns.df_linhas dl1 ON (dl1.df_linha = a.id_linhadocorigem)
+				  WHERE a.id_linhadocreferenciado = dl.df_linha and  dl1.situacaogerencial <> 4), 0) AS pedido_quantidadefaturada,
+			(select string_agg(b.numero::varchar, ', ') from compras.associacoesitensnotas a inner join ns.df_docfis b ON (a.id_docorigem = b.id)  
+				 WHERE a.id_linhadocreferenciado = dl.df_linha) AS pedido_docfis
+		FROM 
+			ns.df_docfis d
+		INNER JOIN 
+			ns.df_linhas dl ON (dl.id_docfis = d.id and dl.tipolinha = 1) 
+		INNER JOIN 
+			estoque.itens i ON (i.id = dl.id_item)
+		WHERE 
+			d.documento_operacao = VAR_OPERACAO AND d.lancamento >= VAR_DATA_INICIO
+				
+	);
+  
+	-- Atualizar Itens 
+	-- Itens Completamente Faturados
+	UPDATE ns.df_linhas SET situacaogerencial = 5 WHERE df_linha IN (
+		SELECT pedido_df_linha  FROM _ANALISE_PEDIDOS WHERE pedido_quantidade = pedido_quantidadefaturada and pedido_df_linha_situacao_gerencial not in (4, 5)/*Liquidado*/
+	);  
+	
+	UPDATE ns.df_docfis SET reconstruirxml = true WHERE id IN (SELECT DISTINCT pedido_id FROM _ANALISE_PEDIDOS WHERE pedido_quantidade = pedido_quantidadefaturada and pedido_df_linha_situacao_gerencial not in (4, 5)/*Liquidado*/);
+
+	-- Itens Parcialmente Fat
+	-- Itens Parcialmente Faturados 
+	UPDATE ns.df_linhas SET situacaogerencial = 3 WHERE df_linha IN (
+		SELECT pedido_df_linha FROM _ANALISE_PEDIDOS WHERE pedido_quantidade <> pedido_quantidadefaturada and pedido_quantidadefaturada >  0 and pedido_df_linha_situacao_gerencial <> 3/*PArcialMente*/
+	);
+	
+	UPDATE ns.df_docfis SET reconstruirxml = true WHERE id IN (SELECT DISTINCT pedido_id FROM _ANALISE_PEDIDOS WHERE  pedido_quantidade <> pedido_quantidadefaturada and pedido_quantidadefaturada >  0 and pedido_df_linha_situacao_gerencial <> 3/*PArcialMente*/);
+
+	-- Atualizar Os Pedidos em aberto com statis diferente 
+	UPDATE ns.df_linhas SET situacaogerencial = 1 WHERE df_linha IN (
+		SELECT pedido_df_linha FROM _ANALISE_PEDIDOS WHERE pedido_quantidadefaturada = 0  and (pedido_df_linha_situacao_gerencial NOT iN  (1, 2, 4))  and PEDIDO_numero <> '9945'
+	);
+	
+	UPDATE ns.df_docfis SET reconstruirxml = true WHERE id IN (SELECT DISTINCT pedido_id FROM _ANALISE_PEDIDOS WHERE pedido_quantidadefaturada = 0  and (pedido_df_linha_situacao_gerencial <> 1 OR pedido_df_linha_situacao_gerencial NOT iN  (1, 2, 4) ));
+	
+	
+	-- NOVA TABELA 
+	DROP TABLE IF EXISTS _ANALISE_PEDIDOS_2; 
+	
+	CREATE TABLE _ANALISE_PEDIDOS_2 AS ( 
+
+		SELECT 
+			d.id AS pedido_id, 
+			d.numero AS pedido_numero, 
+			d.situacaogerencial AS pedido_situacao_gerencial, 
+			dl.df_linha AS pedido_df_linha, 
+			dl.situacaogerencial AS pedido_df_linha_situacao_gerencial, 
+			i.item AS pedido_item, 
+			dl.quantidadecomercial AS pedido_quantidade, 
+			coalesce((select sum(a.quantidade) from compras.associacoesitensnotas a inner join ns.df_linhas dl1 ON (dl1.df_linha = a.id_linhadocorigem)
+				  WHERE a.id_linhadocreferenciado = dl.df_linha and  dl1.situacaogerencial <> 4), 0) AS pedido_quantidadefaturada,
+			(select string_agg(b.numero::varchar, ', ') from compras.associacoesitensnotas a inner join ns.df_docfis b ON (a.id_docorigem = b.id)  
+				 WHERE a.id_linhadocreferenciado = dl.df_linha) AS pedido_docfis
+		FROM 
+			ns.df_docfis d
+		INNER JOIN 
+			ns.df_linhas dl ON (dl.id_docfis = d.id and dl.tipolinha = 1) 
+		INNER JOIN 
+			estoque.itens i ON (i.id = dl.id_item)
+		WHERE 
+			d.documento_operacao = VAR_OPERACAO AND d.lancamento >= VAR_DATA_INICIO
+				
+	);
+
+	-- Atualizar Documentos 
+
+	-- Tudo Liquidado e documento com outra situação 
+	UPDATE ns.df_docfis SET situacaogerencial = 5, reconstruirxml = true  WHERE id IN (
+	SELECT DISTINCT pedido_id
+		 
+	FROM 
+		_ANALISE_PEDIDOS_2  A 
+	WHERE 
+		(COALESCE((SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID  AND B.PEDIDO_DF_LINHA_SITUACAO_GERENCIAL = 5), 0) =
+		(SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID) )
+		AND  A.pedido_situacao_gerencial <> 5 --ORDER BY pedido_numero
+	); 
+
+	-- Cancelado e Liquidado 
+	UPDATE ns.df_docfis SET situacaogerencial = 5, reconstruirxml = true  WHERE id IN (
+	SELECT  DISTINCT pedido_id  
+		 
+	FROM 
+		_ANALISE_PEDIDOS_2  A 
+	WHERE 
+		(COALESCE((SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID  AND B.PEDIDO_DF_LINHA_SITUACAO_GERENCIAL IN (5, 4)), 0) =
+		(SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID) )
+		AND  A.pedido_situacao_gerencial NOT IN (4, 5) --ORDER BY pedido_numero
+	); 
+		
+	
+	-- Faturados e Abertos 
+	UPDATE ns.df_docfis SET situacaogerencial = 3, reconstruirxml = true  WHERE id IN (
+	SELECT  DISTINCT pedido_id  
+	--*	 
+	FROM 
+		_ANALISE_PEDIDOS_2  A 
+	WHERE 
+		(COALESCE((SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID  AND B.PEDIDO_DF_LINHA_SITUACAO_GERENCIAL IN (5, 4)), 0) > 0) AND 
+		(COALESCE((SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID  AND B.PEDIDO_DF_LINHA_SITUACAO_GERENCIAL IN (5, 4)), 0) <
+		(SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID) )
+		
+		AND  A.pedido_situacao_gerencial NOT IN (3) --ORDER BY pedido_numero
+	); 
+	
+
+	-- Prcialmente liquidados e abertos 
+	UPDATE ns.df_docfis SET situacaogerencial = 3, reconstruirxml = true  WHERE id IN (
+	SELECT  DISTINCT pedido_id  
+	--*	 
+	FROM 
+		_ANALISE_PEDIDOS_2  A 
+	WHERE 
+		(COALESCE((SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID  AND B.PEDIDO_DF_LINHA_SITUACAO_GERENCIAL IN (3)), 0) > 0)
+		AND  A.pedido_situacao_gerencial NOT IN (3) --ORDER BY pedido_numero
+	); 
+	
+	
+	-- Abertos	-- Ver como fica 
+	UPDATE ns.df_docfis SET situacaogerencial = 1, reconstruirxml = true  WHERE id IN (
+	SELECT  DISTINCT pedido_id  
+	-- *	 
+	FROM 
+		_ANALISE_PEDIDOS_2  A 
+	WHERE 
+		(COALESCE((SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID  AND B.PEDIDO_DF_LINHA_SITUACAO_GERENCIAL IN (1, 2)), 0) =
+		(SELECT COUNT(1) FROM _ANALISE_PEDIDOS_2 B WHERE B.PEDIDO_ID = A.PEDIDO_ID) )
+		
+		AND  A.pedido_situacao_gerencial NOT IN (1, 2) --ORDER BY pedido_numero
+	); 
+	
+
+	-- Saldos dos itens que tem algo cancelado 
+
+	-- Ver com eles o cancelado.. testar script 
+	
+	-- Verificarf se os cancelados tem movimentos  
+	
+	DROP TABLE IF EXISTS _ANALISE_PEDIDOS; 
+	DROP TABLE IF EXISTS _ANALISE_PEDIDOS_2; 
+
+
+END; 
+$$ 

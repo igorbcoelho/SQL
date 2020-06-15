@@ -1,0 +1,34 @@
+/*  Fechamento de Caixa.... BY Igor */
+/* =================================*/
+
+
+/* TOTAL DO DIA */
+
+
+select SUM(ItemVenda.nValorTotal) AS 'Total de Vendas', Lancamentos.dLancamento AS 'Data do Caixa'
+from ItemVenda
+inner join Vendas ON
+(itemvenda.icodvenda = vendas.icodvenda)
+inner join Lançamentos ON
+(vendas.iSeqCaixa = lancamentos.idLancamento)
+where vendas.sStatus <> 'C'
+group by Lancamentos.dLancamento
+order by Lancamentos.dLancamento
+
+
+/* =============================================================================================== */
+
+
+/* TOTAL DO DIA DETALHADO POR FORMA DE PAGAMENTO */
+
+select SUM(Pagamentos.nValorPagamento) AS 'Total Pago', FormaPagamento.sNomePagamento AS 'Forma de Pagamento', Lançamentos.dLancamento AS 'Data'
+from Pagamentos
+inner join FormaPagamento ON
+(Pagamentos.iCodPagamento = FormaPagamento.iPagamento)
+inner join Vendas ON
+(Pagamentos.icodvenda = vendas.icodvenda)
+inner join Lançamentos ON
+(vendas.iSeqCaixa = lancamentos.idLancamento)
+where vendas.sStatus <> 'C'
+group by FormaPagamento.sNomePagamento, Lancamentos.dLancamento
+order by Lancamentos.dLancamento

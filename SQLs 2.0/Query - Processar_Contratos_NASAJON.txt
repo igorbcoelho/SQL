@@ -1,0 +1,2 @@
+SELECT job_processar_contratos_recebimentos_mensais( 
+(SELECT estabelecimento FROM ns.estabelecimentos WHERE codigo = 'SUPORTEK'), 12, 2019,(SELECT indice FROM financas.indices WHERE codigo = 'IDX_X'));
